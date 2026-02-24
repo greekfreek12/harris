@@ -34,10 +34,10 @@ export default function Navbar() {
         <div className="flex h-[72px] items-center justify-between">
           <Link href="/" className="shrink-0 group">
             <span className="font-display text-[19px] text-white tracking-tight">
-              Harris
+              Logo Here
             </span>
-            <span className="text-[13px] text-white/40 font-light ml-1.5 hidden sm:inline">
-              Plumbing & Home Improvements
+            <span className="text-[11px] text-white/45 font-medium ml-2 uppercase tracking-[0.18em] hidden sm:inline">
+              Coming Soon
             </span>
           </Link>
 
