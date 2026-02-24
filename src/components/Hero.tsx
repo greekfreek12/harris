@@ -1,6 +1,10 @@
-import Link from "next/link";
+"use client";
+
+import { useComingSoon } from "./ComingSoonAlert";
 
 export default function Hero() {
+  const comingSoon = useComingSoon();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div
@@ -35,8 +39,8 @@ export default function Hero() {
             </svg>
             Call (205) 829-5282
           </a>
-          <Link
-            href="/contact"
+          <button
+            onClick={comingSoon}
             className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/[0.08] backdrop-blur-sm px-7 sm:px-8 py-3.5 sm:py-4 text-[13px] sm:text-[14px] font-semibold text-white transition-all duration-200 hover:bg-white/[0.15] hover:border-white/50"
           >
             Get a Free Estimate
@@ -44,7 +48,7 @@ export default function Hero() {
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
-          </Link>
+          </button>
         </div>
 
       </div>

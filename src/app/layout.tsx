@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ClientProviders from "@/components/ClientProviders";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -32,9 +33,11 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${dmSerif.variable} antialiased`}
       >
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <ClientProviders>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </ClientProviders>
       </body>
     </html>
   );

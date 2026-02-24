@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useComingSoon } from "./ComingSoonAlert";
 
 const services = [
   {
@@ -8,18 +8,18 @@ const services = [
     desc: "Whole-home renovations, custom remodels, and new residential construction built with long-term durability in mind.",
     button: "Explore Services",
     image: "/images/svc-home.jpg",
-    href: "/contact",
   },
   {
     title: "Plumbing Services",
     desc: "Master-level plumbing for new builds, renovations, and standalone service calls across Birmingham.",
     button: "View Plumbing Services",
     image: "/images/svc-plumbing-new.jpg",
-    href: "/plumbing",
   },
 ];
 
 export default function Services() {
+  const comingSoon = useComingSoon();
+
   return (
     <section id="services" className="relative py-24 lg:py-28 bg-[#f8f6f3] scroll-mt-20">
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
@@ -29,7 +29,7 @@ export default function Services() {
             Our Services
           </h2>
           <p className="mt-5 mx-auto max-w-2xl text-[15px] sm:text-[16px] text-[#5e5852] leading-[1.8]">
-            From full residential construction and renovations to precision plumbing repairs, upgrades, and installs, we handle the full scope start to finish.
+            Harris Plumbing & Home Improvements delivers full-scope residential construction, renovations, and precision plumbing — start to finish.
           </p>
         </div>
 
@@ -49,8 +49,8 @@ export default function Services() {
               <div className="p-6 sm:p-8 text-center">
                 <h3 className="font-display text-[22px] sm:text-[28px] text-[#1a1a1a] tracking-tight">{s.title}</h3>
                 <p className="mt-3 text-[14px] sm:text-[15px] text-[#6b6560] leading-relaxed">{s.desc}</p>
-                <Link
-                  href={s.href}
+                <button
+                  onClick={comingSoon}
                   className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#c8964e] px-5 sm:px-7 py-2.5 sm:py-3 text-[13px] sm:text-[14px] font-semibold text-white shadow-[0_2px_12px_rgba(200,150,78,0.25)] transition-all duration-200 hover:bg-[#b07d3a] hover:shadow-[0_4px_20px_rgba(200,150,78,0.4)] hover:scale-[1.02]"
                 >
                   {s.button}
@@ -58,7 +58,7 @@ export default function Services() {
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
                   </svg>
-                </Link>
+                </button>
               </div>
             </div>
           ))}
