@@ -12,6 +12,7 @@ const serviceList = [
 const companyLinks = [
   { href: "/", label: "Home" },
   { href: "/#services", label: "Services" },
+  { href: "/plumbing", label: "Plumbing" },
   { href: "/#projects", label: "Projects" },
   { href: "/#testimonials", label: "Reviews" },
   { href: "/contact", label: "Contact" },

@@ -13,7 +13,7 @@ const services = [
     desc: "Master-level plumbing for new builds, renovations, and standalone service calls across Birmingham.",
     button: "View Plumbing Services",
     image: "/images/svc-waterheater.jpg",
-    href: "/contact",
+    href: "/plumbing",
   },
 ];
 
