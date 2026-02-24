@@ -4,31 +4,26 @@ export default function CTASection() {
   return (
     <section className="relative py-28 lg:py-36 overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2070&auto=format&fit=crop')" }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/cta-bg.jpg')" }}
       />
-      <div className="absolute inset-0 bg-black/75" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+      <div className="absolute inset-0 bg-black/70" />
 
-      <div className="relative z-10 mx-auto max-w-3xl px-5 sm:px-8 lg:px-10 text-center">
-        <div className="flex items-center justify-center gap-3 mb-6">
-          <div className="h-px w-12 bg-gold" />
-          <p className="text-[12px] font-semibold uppercase tracking-[0.25em] text-gold">Get Started</p>
-          <div className="h-px w-12 bg-gold" />
-        </div>
+      <div className="relative z-10 mx-auto max-w-3xl px-6 sm:px-8 text-center">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8964e] mb-5">Get Started</p>
 
-        <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]">
-          Get a Clear Quote and a Clean Timeline
+        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.1]">
+          Ready to Transform Your Home?
         </h2>
 
-        <p className="mt-6 text-[17px] text-white/60 leading-relaxed max-w-lg mx-auto">
+        <p className="mt-5 text-[16px] text-white/50 leading-relaxed max-w-lg mx-auto">
           No hidden fees, no surprises. Just honest pricing and quality work from a team you can trust.
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-full gold-gradient px-9 py-4 text-[15px] font-semibold text-white shadow-[0_4px_20px_rgba(200,150,78,0.3)] transition-all hover:shadow-[0_6px_30px_rgba(200,150,78,0.5)] hover:scale-[1.02] tracking-wide gap-2"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#c8964e] px-8 py-4 text-[14px] font-semibold text-white shadow-[0_4px_20px_rgba(200,150,78,0.3)] transition-all duration-200 hover:bg-[#b07d3a] hover:shadow-[0_6px_28px_rgba(200,150,78,0.5)] hover:scale-[1.02]"
           >
             Request Your Free Estimate
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -38,7 +33,7 @@ export default function CTASection() {
           </Link>
           <a
             href="tel:2058295282"
-            className="inline-flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-9 py-4 text-[15px] font-semibold text-white transition-all hover:bg-white/20 tracking-wide"
+            className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/[0.06] backdrop-blur-sm px-8 py-4 text-[14px] font-semibold text-white transition-all duration-200 hover:bg-white/[0.12]"
           >
             Call (205) 829-5282
           </a>

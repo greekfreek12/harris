@@ -70,7 +70,7 @@ export default function ContactPage() {
       <div className="relative pt-32 pb-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070&auto=format&fit=crop')" }}
+          style={{ backgroundImage: "url('/images/contact-bg.jpg')" }}
         />
         <div className="absolute inset-0 bg-black/70" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c8964e]/20 to-transparent" />
