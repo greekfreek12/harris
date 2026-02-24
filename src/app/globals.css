@@ -1,16 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafaf9;
-  --foreground: #1c1917;
-  --nav-bg: #1c1917;
-  --nav-text: #fafaf9;
-  --accent: #b45309;
-  --accent-hover: #92400e;
-  --muted: #78716c;
-  --border: #e7e5e4;
+  --background: #f8f6f3;
+  --foreground: #1a1a1a;
+  --nav-bg: #111111;
+  --nav-text: #f8f6f3;
+  --gold: #c8964e;
+  --gold-hover: #b07d3a;
+  --gold-light: #f0e6d4;
+  --gold-glow: rgba(200, 150, 78, 0.15);
+  --muted: #6b6560;
+  --border: #e2ddd6;
   --card-bg: #ffffff;
-  --section-alt: #f5f5f4;
+  --section-alt: #f1ede8;
+  --charcoal: #2a2a2a;
+  --warm-gray: #8a817a;
 }
 
 @theme inline {
@@ -18,14 +22,18 @@
   --color-foreground: var(--foreground);
   --color-nav-bg: var(--nav-bg);
   --color-nav-text: var(--nav-text);
-  --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
+  --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
+  --color-gold-light: var(--gold-light);
+  --color-gold-glow: var(--gold-glow);
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-card-bg: var(--card-bg);
   --color-section-alt: var(--section-alt);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-charcoal: var(--charcoal);
+  --color-warm-gray: var(--warm-gray);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-dm-sans);
 }
 
 * {
@@ -39,12 +47,108 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--gold);
   color: white;
+}
+
+.font-display {
+  font-family: var(--font-dm-serif), Georgia, serif;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease both;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 256px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #c8964e 0%, #e0b878 50%, #c8964e 100%);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #c8964e 0%, #e0b878 50%, #c8964e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
