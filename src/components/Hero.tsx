@@ -18,55 +18,77 @@ export default function Hero() {
               <div className="flex items-center gap-3 mb-8">
                 <div className="h-px w-12 bg-gold" />
                 <p className="text-[12px] font-semibold uppercase tracking-[0.25em] text-gold">
-                  Serving Birmingham, Alabama
+                  Birmingham, Alabama
                 </p>
               </div>
             </div>
 
             <h1 className="animate-fade-in-up delay-100">
-              <span className="block font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] text-white leading-[1.05] tracking-tight">
-                Premium Home
+              <span className="block font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[4.5rem] text-white leading-[1.08] tracking-tight">
+                Premier Plumbing &
               </span>
-              <span className="block font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.05] tracking-tight mt-1">
-                <span className="text-gradient-gold">Improvements</span>
-                <span className="text-white"> &</span>
+              <span className="block font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[4.5rem] leading-[1.08] tracking-tight mt-1">
+                <span className="text-gradient-gold">Home Transformations</span>
               </span>
-              <span className="block font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] text-white leading-[1.05] tracking-tight mt-1">
-                Plumbing
+              <span className="block font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[4.5rem] text-white leading-[1.08] tracking-tight mt-1">
+                in Birmingham
               </span>
             </h1>
 
-            <p className="animate-fade-in-up delay-300 mt-8 text-[17px] leading-[1.7] text-neutral-400 max-w-lg">
-              Quality craftsmanship, clear communication, and clean work from start to finish. 
-              Remodels, repairs, and everything in between.
-            </p>
+            <div className="animate-fade-in-up delay-200 mt-6 font-display text-xl sm:text-2xl italic text-neutral-400">
+              Crafted with Excellence
+            </div>
+
+            <div className="animate-fade-in-up delay-300 mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+              <span className="flex items-center gap-2 text-[13px] text-neutral-400">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                Excellent Craftsmanship
+              </span>
+              <span className="flex items-center gap-2 text-[13px] text-neutral-400">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                Affordable & Reliable
+              </span>
+              <span className="flex items-center gap-2 text-[13px] text-neutral-400">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                New Construction, Renovations & Plumbing
+              </span>
+            </div>
 
             <div className="animate-fade-in-up delay-400 mt-10 flex flex-col sm:flex-row gap-4">
+              <a
+                href="tel:2058295282"
+                className="inline-flex items-center justify-center rounded-full gold-gradient px-8 py-4 text-[14px] font-semibold text-white shadow-[0_4px_20px_rgba(200,150,78,0.3)] transition-all hover:shadow-[0_6px_30px_rgba(200,150,78,0.45)] hover:scale-[1.02] tracking-wide gap-2.5"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                Call Now (205) 829-5282
+              </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full gold-gradient px-8 py-4 text-[14px] font-semibold text-white shadow-[0_4px_20px_rgba(200,150,78,0.3)] transition-all hover:shadow-[0_6px_30px_rgba(200,150,78,0.45)] hover:scale-[1.02] tracking-wide"
+                className="inline-flex items-center justify-center rounded-full border border-neutral-700 px-8 py-4 text-[14px] font-semibold text-white transition-all hover:border-gold hover:text-gold tracking-wide gap-2"
               >
-                Request a Remodel Quote
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                Get a Free Quote
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-full border border-neutral-700 px-8 py-4 text-[14px] font-semibold text-white transition-all hover:border-gold hover:text-gold tracking-wide"
-              >
-                Book Plumbing Service
-              </Link>
             </div>
 
-            <div className="animate-fade-in-up delay-500 mt-14 flex items-center gap-8">
-              <div className="flex items-center gap-2.5">
-                <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[12px] text-neutral-500 uppercase tracking-wider font-medium">Licensed & Insured</span>
+            <div className="animate-fade-in-up delay-500 mt-14 flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gold fill-gold" viewBox="0 0 24 24">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-[13px] text-neutral-400 font-medium">5.0 on Google</span>
               </div>
               <div className="h-4 w-px bg-neutral-800" />
-              <span className="text-[12px] text-neutral-500 uppercase tracking-wider font-medium">Birmingham, AL</span>
+              <span className="text-[12px] text-neutral-500 uppercase tracking-wider font-medium">Licensed & Insured</span>
             </div>
           </div>
 
@@ -82,7 +104,7 @@ export default function Hero() {
                       <polyline points="21 15 16 10 5 21" />
                     </svg>
                   </div>
-                  <p className="text-[13px] text-neutral-600 font-medium">Featured Project</p>
+                  <p className="text-[13px] text-neutral-600 font-medium">Luxury Kitchen or Bathroom Image</p>
                 </div>
               </div>
 
@@ -97,8 +119,8 @@ export default function Hero() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-[13px] font-semibold text-white">20+ Years</p>
-                    <p className="text-[11px] text-neutral-500">Trusted Experience</p>
+                    <p className="text-[13px] font-semibold text-white">Master Plumber Led</p>
+                    <p className="text-[11px] text-neutral-500">Expert Craftsmanship</p>
                   </div>
                 </div>
               </div>
