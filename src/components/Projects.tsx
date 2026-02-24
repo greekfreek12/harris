@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const projects = [
   { image: "/images/svc-bathroom.jpg", alt: "Master Bathroom Remodel" },
@@ -13,11 +13,28 @@ const projects = [
 
 export default function Projects() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const interval = setInterval(() => {
+      if (paused) return;
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      if (el.scrollLeft >= maxScroll - 10) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: 340, behavior: "smooth" });
+      }
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [paused]);
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
-    const amount = scrollRef.current.offsetWidth * 0.7;
-    scrollRef.current.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
+    scrollRef.current.scrollBy({ left: dir === "left" ? -340 : 340, behavior: "smooth" });
   };
 
   return (
@@ -34,7 +51,7 @@ export default function Projects() {
             <button
               onClick={() => scroll("left")}
               className="w-10 h-10 rounded-full border border-[#e2ddd6] bg-white flex items-center justify-center text-[#6b6560] hover:border-[#c8964e] hover:text-[#c8964e] transition-colors"
-              aria-label="Scroll left"
+              aria-label="Previous"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="15 18 9 12 15 6" />
@@ -43,7 +60,7 @@ export default function Projects() {
             <button
               onClick={() => scroll("right")}
               className="w-10 h-10 rounded-full border border-[#e2ddd6] bg-white flex items-center justify-center text-[#6b6560] hover:border-[#c8964e] hover:text-[#c8964e] transition-colors"
-              aria-label="Scroll right"
+              aria-label="Next"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="9 18 15 12 9 6" />
@@ -55,14 +72,16 @@ export default function Projects() {
 
       <div
         ref={scrollRef}
-        className="flex gap-4 overflow-x-auto scroll-smooth px-6 sm:px-8 pb-4 snap-x snap-mandatory no-scrollbar"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onTouchStart={() => setPaused(true)}
+        onTouchEnd={() => setPaused(false)}
+        className="flex gap-4 overflow-x-auto scroll-smooth pl-6 sm:pl-8 pr-6 pb-2 snap-x snap-mandatory no-scrollbar"
       >
-        <div className="shrink-0 w-[calc((100vw-3rem)/1.15)] sm:w-[calc((100vw-4rem)/2.2)] lg:w-[calc((100vw-4rem)/3.5)] first:ml-0" />
         {projects.map((project) => (
           <div
             key={project.alt}
-            className="shrink-0 w-[calc((100vw-3rem)/1.15)] sm:w-[calc((100vw-4rem)/2.2)] lg:w-[calc((100vw-4rem)/3.5)] snap-start"
+            className="shrink-0 w-[80vw] sm:w-[45vw] lg:w-[30vw] max-w-[420px] snap-start"
           >
             <div className="relative rounded-2xl overflow-hidden group">
               <div
@@ -72,7 +91,6 @@ export default function Projects() {
             </div>
           </div>
         ))}
-        <div className="shrink-0 w-4" />
       </div>
     </section>
   );
