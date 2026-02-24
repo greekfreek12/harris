@@ -5,17 +5,17 @@ import { useEffect, useRef, useState } from "react";
 
 const services = [
   {
-    title: "Renovations & Construction",
+    title: "Home Improvements",
     desc: "Whole-home renovations, custom remodels, and new residential construction built with long-term durability in mind.",
-    button: "Explore Renovations",
-    image: "/images/svc-kitchen.jpg",
+    button: "Explore Services",
+    image: "/images/svc-home.jpg",
     href: "/contact",
   },
   {
     title: "Plumbing Services",
     desc: "Master-level plumbing for new builds, renovations, and standalone service calls across Birmingham.",
     button: "View Plumbing Services",
-    image: "/images/svc-waterheater.jpg",
+    image: "/images/svc-plumbing-new.jpg",
     href: "/plumbing",
   },
 ];

@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
+        style={{ backgroundImage: "url('/images/hero-bg-new.jpg')" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/50" />
 
@@ -47,20 +47,6 @@ export default function Hero() {
           </Link>
         </div>
 
-        <div className="animate-fade-in-up delay-400 mt-14 flex items-center justify-center gap-5 flex-wrap">
-          <div className="flex items-center gap-1.5">
-            {[...Array(5)].map((_, i) => (
-              <svg key={i} xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 text-[#c8964e] fill-[#c8964e]" viewBox="0 0 24 24">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-              </svg>
-            ))}
-            <span className="text-[11px] text-white font-medium tracking-wide ml-1">5.0 Google</span>
-          </div>
-          <span className="w-px h-3 bg-white/30" />
-          <span className="text-[10px] text-white uppercase tracking-[0.2em] font-medium">Licensed & Insured</span>
-          <span className="w-px h-3 bg-white/30" />
-          <span className="text-[10px] text-white uppercase tracking-[0.2em] font-medium">Master Plumber</span>
-        </div>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#f8f6f3] to-transparent" />

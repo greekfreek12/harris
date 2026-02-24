@@ -24,11 +24,18 @@ const reviews = [
 ];
 
 const googleReviewUrl = "https://www.google.com/search?q=harris+plumbing+and+home+improvements&rlz=1CAGXWE_enUS1166&oq=har&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIVCAEQLhhDGMcBGLEDGNEDGIAEGIoFMggIAhBFGCcYOzIGCAMQRRhAMgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGEHSAQc5ODdqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8#lrd=0x65d501dd31d5ddab:0x6565c87c62291709,1,,,,";
+const REVIEW_PREVIEW_LIMIT = 220;
+
+function getReviewPreview(text: string) {
+  if (text.length <= REVIEW_PREVIEW_LIMIT) return text;
+  return `${text.slice(0, REVIEW_PREVIEW_LIMIT).trimEnd()}...`;
+}
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const activeReview = reviews[active];
 
   useEffect(() => {
     timerRef.current = setInterval(() => {
@@ -42,12 +49,15 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative py-24 lg:py-28 bg-[#111111] scroll-mt-20"
+      className="relative overflow-hidden py-24 lg:py-28 bg-[#111111] scroll-mt-20"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
+      onTouchEnd={() => setPaused(false)}
     >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,rgba(200,150,78,0.16),transparent_40%),radial-gradient(circle_at_10%_90%,rgba(200,150,78,0.1),transparent_45%)]" />
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
-        <div className="text-center mb-12">
+        <div className="relative text-center mb-12">
           <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8964e] mb-4">What Our Clients Say</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.1]">
             5-Star Reviews
@@ -62,41 +72,41 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-2xl">
-          <div className="relative min-h-[260px] sm:min-h-[220px]">
-            {reviews.map((review, i) => (
-              <div
-                key={review.name}
-                className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-                  i === active
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4 pointer-events-none"
-                }`}
+        <div className="relative mx-auto max-w-2xl">
+          <div className="relative rounded-[28px] border border-white/[0.12] bg-[linear-gradient(165deg,rgba(255,255,255,0.07),rgba(255,255,255,0.02))] p-6 sm:p-10 shadow-[0_28px_80px_rgba(0,0,0,0.35)] transition-all duration-500 ease-out">
+            <span className="absolute left-5 top-4 font-display text-5xl leading-none text-[#c8964e]/45 sm:left-8 sm:top-6 sm:text-6xl">
+              &ldquo;
+            </span>
+            <p className="relative mt-6 text-[15px] sm:text-[16px] text-white/85 leading-[1.8] text-center min-h-[7rem] sm:min-h-[6.5rem]">
+              {getReviewPreview(activeReview.text)}
+            </p>
+            <p className="mt-2 text-center">
+              <a
+                href={googleReviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[12px] uppercase tracking-[0.16em] text-[#c8964e]/90 hover:text-[#f0d6ac] transition-colors"
               >
-                <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-8 sm:p-10">
-                  <p className="text-[15px] sm:text-[16px] text-white/80 leading-[1.8] text-center">
-                    &ldquo;{review.text}&rdquo;
-                  </p>
-                  <div className="mt-6 flex items-center justify-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#c8964e]/20 flex items-center justify-center text-[#c8964e] text-[14px] font-bold">
-                      {review.name.charAt(0)}
-                    </div>
-                    <div className="text-left">
-                      <p className="text-[14px] font-semibold text-white">{review.name}</p>
-                      {review.badge && (
-                        <p className="text-[11px] text-[#c8964e]/70 tracking-wide">{review.badge}</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
+                Read full review
+              </a>
+            </p>
+            <div className="mt-6 flex items-center justify-center gap-3">
+              <div className="w-11 h-11 rounded-full bg-[#c8964e]/20 flex items-center justify-center text-[#c8964e] text-[15px] font-bold">
+                {activeReview.name.charAt(0)}
               </div>
-            ))}
+              <div className="text-left">
+                <p className="text-[14px] font-semibold text-white">{activeReview.name}</p>
+                {activeReview.badge && (
+                  <p className="text-[11px] text-[#c8964e]/75 tracking-wide">{activeReview.badge}</p>
+                )}
+              </div>
+            </div>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-6">
+          <div className="mt-7 flex items-center justify-center gap-3 sm:gap-6">
             <button
               onClick={() => setActive((active - 1 + reviews.length) % reviews.length)}
-              className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-[#c8964e] hover:text-[#c8964e] transition-colors"
+              className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:border-[#c8964e] hover:text-[#c8964e] transition-colors"
               aria-label="Previous review"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -110,7 +120,7 @@ export default function Testimonials() {
                   key={i}
                   onClick={() => setActive(i)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    i === active ? "w-6 bg-[#c8964e]" : "w-2 bg-white/15 hover:bg-white/25"
+                    i === active ? "w-7 bg-[#c8964e]" : "w-2 bg-white/20 hover:bg-white/35"
                   }`}
                   aria-label={`Go to review ${i + 1}`}
                 />
@@ -119,7 +129,7 @@ export default function Testimonials() {
 
             <button
               onClick={() => setActive((active + 1) % reviews.length)}
-              className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-[#c8964e] hover:text-[#c8964e] transition-colors"
+              className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:border-[#c8964e] hover:text-[#c8964e] transition-colors"
               aria-label="Next review"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -133,7 +143,7 @@ export default function Testimonials() {
               href={googleReviewUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-[#c8964e]/40 px-5 py-2.5 text-[13px] font-semibold text-[#c8964e] transition-all hover:bg-[#c8964e]/10 hover:border-[#c8964e]"
+              className="inline-flex w-full justify-center sm:w-auto items-center gap-2 rounded-full border border-[#c8964e]/40 px-5 py-3 text-[13px] font-semibold text-[#c8964e] transition-all hover:bg-[#c8964e]/12 hover:border-[#c8964e]"
             >
               Leave a Review
               <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
