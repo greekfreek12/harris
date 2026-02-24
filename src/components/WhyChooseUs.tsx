@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-function useInView() {
+function useInView(threshold = 0.2) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -10,104 +10,112 @@ function useInView() {
     if (!el) return;
     const obs = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.15 }
+      { threshold }
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [threshold]);
   return { ref, visible };
 }
 
 const reasons = [
   {
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         <path d="m9 12 2 2 4-4" />
       </svg>
     ),
     title: "Licensed & Insured",
-    desc: "Fully licensed and insured for your peace of mind. Every job is backed by professional accountability and done to code.",
+    desc: "Every job is backed by full licensing, insurance, and code-compliant work.",
   },
   {
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
         <path d="M12 6v6l4 2" />
       </svg>
     ),
     title: "Reliable & On Time",
-    desc: "We show up when we say we will and finish on schedule. Clear timelines, honest communication, no runaround.",
+    desc: "We show up when we say we will. Clear timelines, honest communication.",
   },
   {
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-      </svg>
-    ),
-    title: "Quality Craftsmanship",
-    desc: "Built to last, not just to look good. We take pride in durable, detail-oriented work on every project we touch.",
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
         <path d="M2 17l10 5 10-5" />
         <path d="M2 12l10 5 10-5" />
-        <path d="M12 2L2 7l10 5 10-5-10-5z" />
       </svg>
     ),
     title: "Upfront Pricing",
-    desc: "No hidden fees, no surprise charges. You'll know exactly what to expect before any work begins.",
+    desc: "No hidden fees. You know exactly what to expect before work begins.",
   },
 ];
 
 export default function WhyChooseUs() {
-  const section = useInView();
+  const heading = useInView();
+  const image = useInView(0.15);
+  const item0 = useInView(0.3);
+  const item1 = useInView(0.3);
+  const item2 = useInView(0.3);
+  const items = [item0, item1, item2];
 
   return (
-    <section className="py-24 lg:py-28 bg-white scroll-mt-20">
-      <div
-        ref={section.ref}
-        className={`mx-auto max-w-6xl px-6 sm:px-8 transition-all duration-700 ${section.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-      >
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
-          <div className="w-full lg:w-5/12">
-            <div className="relative rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.1)]">
-              <div
-                className="aspect-[4/5] sm:aspect-[3/4] bg-cover bg-center"
-                style={{ backgroundImage: "url('/images/svc-plumbing-new.jpg')" }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+    <section className="relative py-28 lg:py-36 bg-[#111111] overflow-hidden scroll-mt-20">
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")", backgroundSize: "256px" }} />
+
+      <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
+          <div
+            ref={image.ref}
+            className={`w-full lg:w-[45%] transition-all duration-1000 ease-out ${image.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"}`}
+          >
+            <div className="relative">
+              <div className="rounded-2xl overflow-hidden">
+                <div
+                  className="aspect-[3/4] bg-cover bg-center"
+                  style={{ backgroundImage: "url('/images/why-choose-us.jpg')" }}
+                />
+              </div>
+              <div className="absolute -bottom-4 -right-4 w-28 h-28 rounded-xl bg-[#c8964e] flex flex-col items-center justify-center shadow-[0_8px_30px_rgba(200,150,78,0.3)]">
+                <span className="font-display text-[32px] text-white leading-none">15+</span>
+                <span className="text-[10px] text-white/80 uppercase tracking-[0.15em] mt-1">Years</span>
+              </div>
             </div>
           </div>
 
-          <div className="w-full lg:w-7/12">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8964e] mb-4">
-              Why Choose Us
-            </p>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-[42px] text-[#1a1a1a] tracking-tight leading-[1.1]">
-              Why Harris Plumbing<br className="hidden sm:block" /> & Home Improvements?
-            </h2>
-            <p className="mt-4 text-[15px] text-[#6b6560] leading-[1.8] max-w-lg">
-              We treat every home like it's our own — with care, transparency, and work you can count on for years to come.
-            </p>
+          <div className="w-full lg:w-[55%]">
+            <div
+              ref={heading.ref}
+              className={`transition-all duration-700 ease-out ${heading.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8964e] mb-5">
+                Why Choose Us
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-[44px] text-white tracking-tight leading-[1.1]">
+                Built on Trust &<br />Quality Work
+              </h2>
+            </div>
 
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="mt-12 space-y-10">
               {reasons.map((r, i) => (
                 <div
                   key={r.title}
-                  className="group"
-                  style={{ transitionDelay: section.visible ? `${i * 100}ms` : "0ms" }}
+                  ref={items[i].ref}
+                  className={`flex gap-5 items-start transition-all duration-700 ease-out ${items[i].visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                  style={{ transitionDelay: items[i].visible ? `${i * 150}ms` : "0ms" }}
                 >
-                  <div className="w-11 h-11 rounded-xl bg-[#c8964e]/10 flex items-center justify-center text-[#c8964e] mb-4 transition-colors group-hover:bg-[#c8964e]/20">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-[#c8964e]/15 flex items-center justify-center text-[#c8964e]">
                     {r.icon}
                   </div>
-                  <h3 className="font-display text-[18px] text-[#1a1a1a] tracking-tight">
-                    {r.title}
-                  </h3>
-                  <p className="mt-2 text-[13px] sm:text-[14px] text-[#6b6560] leading-[1.7]">
-                    {r.desc}
-                  </p>
+                  <div>
+                    <h3 className="font-display text-[18px] sm:text-[20px] text-white tracking-tight">
+                      {r.title}
+                    </h3>
+                    <p className="mt-1.5 text-[14px] text-white/50 leading-[1.6]">
+                      {r.desc}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
