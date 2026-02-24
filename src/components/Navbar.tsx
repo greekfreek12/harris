@@ -7,7 +7,6 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/#services", label: "Home Improvements" },
   { href: "/plumbing", label: "Plumbing" },
-  { href: "/#projects", label: "Projects" },
   { href: "/#testimonials", label: "Reviews" },
   { href: "/contact", label: "Contact" },
 ];
@@ -32,12 +31,11 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <div className="flex h-[72px] items-center justify-between">
-          <Link href="/" className="shrink-0 group">
+          <div className="lg:hidden w-8" />
+
+          <Link href="/" className="shrink-0 group absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0">
             <span className="font-display text-[19px] text-white tracking-tight">
               Logo Here
-            </span>
-            <span className="text-[11px] text-white/45 font-medium ml-2 uppercase tracking-[0.18em] hidden sm:inline">
-              Coming Soon
             </span>
           </Link>
 
@@ -60,12 +58,9 @@ export default function Navbar() {
             >
               (205) 829-5282
             </a>
-            <Link
-              href="/contact"
-              className="rounded-full bg-[#c8964e] px-5 py-2 text-[13px] font-semibold text-white transition-all duration-200 hover:bg-[#b07d3a] shadow-[0_2px_8px_rgba(200,150,78,0.25)]"
-            >
-              Request a Quote
-            </Link>
+            <span className="rounded-full bg-[#c8964e] px-5 py-2 text-[13px] font-semibold text-white cursor-default">
+              Coming Soon
+            </span>
           </div>
 
           <button
@@ -103,13 +98,9 @@ export default function Navbar() {
             >
               (205) 829-5282
             </a>
-            <Link
-              href="/contact"
-              onClick={() => setMobileOpen(false)}
-              className="block text-center py-3 text-[14px] font-semibold text-white bg-[#c8964e] rounded-xl"
-            >
-              Request a Quote
-            </Link>
+            <span className="block text-center py-3 text-[14px] font-semibold text-white bg-[#c8964e] rounded-xl cursor-default">
+              Coming Soon
+            </span>
           </div>
         </div>
       </div>
