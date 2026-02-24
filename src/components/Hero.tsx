@@ -7,8 +7,7 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
       />
-      <div className="absolute inset-0 bg-black/60" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/40" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-8 text-center py-32">
         <div className="animate-fade-in-up">
@@ -18,13 +17,12 @@ export default function Hero() {
         </div>
 
         <h1 className="animate-fade-in-up delay-100 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.08] tracking-tight">
-          Premier Plumbing &<br />
-          <span className="text-gradient-gold">Home Transformations</span>
+          Premier Home<br />
+          <span className="text-gradient-gold">Transformations</span> in Birmingham
         </h1>
 
-        <p className="animate-fade-in-up delay-200 mt-6 text-[16px] sm:text-[18px] text-white/50 leading-relaxed max-w-xl mx-auto">
-          Quality craftsmanship for kitchens, bathrooms, plumbing, and everything in between.
-          Master plumber-led. Licensed &amp; insured.
+        <p className="animate-fade-in-up delay-200 mt-6 text-[16px] sm:text-[18px] text-white font-medium leading-[1.7] max-w-2xl mx-auto">
+          Residential construction, renovation, and master-level plumbing delivered with craftsmanship and attention to detail.
         </p>
 
         <div className="animate-fade-in-up delay-300 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
@@ -49,19 +47,19 @@ export default function Hero() {
           </Link>
         </div>
 
-        <div className="animate-fade-in-up delay-400 mt-12 flex items-center justify-center gap-5 flex-wrap">
+        <div className="animate-fade-in-up delay-400 mt-16 flex items-center justify-center gap-5 flex-wrap">
           <div className="flex items-center gap-1.5">
             {[...Array(5)].map((_, i) => (
               <svg key={i} xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 text-[#c8964e] fill-[#c8964e]" viewBox="0 0 24 24">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
               </svg>
             ))}
-            <span className="text-[12px] text-white/40 font-medium ml-1">5.0 Google</span>
+            <span className="text-[11px] text-white font-medium tracking-wide ml-1">5.0 Google</span>
           </div>
-          <span className="w-px h-3 bg-white/15" />
-          <span className="text-[11px] text-white/30 uppercase tracking-[0.15em] font-medium">Licensed & Insured</span>
-          <span className="w-px h-3 bg-white/15" />
-          <span className="text-[11px] text-white/30 uppercase tracking-[0.15em] font-medium">Master Plumber</span>
+          <span className="w-px h-3 bg-white/30" />
+          <span className="text-[10px] text-white uppercase tracking-[0.2em] font-medium">Licensed & Insured</span>
+          <span className="w-px h-3 bg-white/30" />
+          <span className="text-[10px] text-white uppercase tracking-[0.2em] font-medium">Master Plumber</span>
         </div>
       </div>
 
