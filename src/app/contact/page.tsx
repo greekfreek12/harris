@@ -66,9 +66,13 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8f6f3] grain-overlay">
-      <div className="relative bg-[#111111] pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(200,150,78,0.06)_0%,transparent_60%)]" />
+    <div className="min-h-screen bg-[#f8f6f3]">
+      <div className="relative pt-32 pb-20 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070&auto=format&fit=crop')" }}
+        />
+        <div className="absolute inset-0 bg-black/70" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c8964e]/20 to-transparent" />
         <div className="relative z-10 mx-auto max-w-3xl px-5 sm:px-8 text-center">
           <div className="flex items-center justify-center gap-3 mb-5">
@@ -79,7 +83,7 @@ export default function ContactPage() {
           <h1 className="font-display text-4xl sm:text-5xl text-white tracking-tight leading-[1.1]">
             Request a Quote in<br />Birmingham, Alabama
           </h1>
-          <p className="mt-5 text-[16px] text-neutral-400 leading-relaxed max-w-md mx-auto">
+          <p className="mt-5 text-[16px] text-white/60 leading-relaxed max-w-md mx-auto">
             Tell us about your project and we&apos;ll get back to you with a clear estimate.
           </p>
         </div>
@@ -91,9 +95,7 @@ export default function ContactPage() {
             <button
               onClick={() => setActiveForm("quick")}
               className={`flex-1 py-4 text-[13px] font-semibold tracking-wide transition-all relative ${
-                activeForm === "quick"
-                  ? "text-[#1a1a1a]"
-                  : "text-[#8a817a] hover:text-[#1a1a1a]"
+                activeForm === "quick" ? "text-[#1a1a1a]" : "text-[#8a817a] hover:text-[#1a1a1a]"
               }`}
             >
               Quick Contact
@@ -104,9 +106,7 @@ export default function ContactPage() {
             <button
               onClick={() => setActiveForm("consultation")}
               className={`flex-1 py-4 text-[13px] font-semibold tracking-wide transition-all relative ${
-                activeForm === "consultation"
-                  ? "text-[#1a1a1a]"
-                  : "text-[#8a817a] hover:text-[#1a1a1a]"
+                activeForm === "consultation" ? "text-[#1a1a1a]" : "text-[#8a817a] hover:text-[#1a1a1a]"
               }`}
             >
               Request a Consultation
@@ -129,12 +129,10 @@ export default function ContactPage() {
                     <input type="tel" required className={inputClasses} placeholder="(205) 555-0123" />
                   </div>
                 </div>
-
                 <div>
                   <label className={labelClasses}>Email</label>
                   <input type="email" required className={inputClasses} placeholder="you@example.com" />
                 </div>
-
                 <div>
                   <label className={labelClasses}>Project Type</label>
                   <select required className={inputClasses}>
@@ -144,16 +142,10 @@ export default function ContactPage() {
                     ))}
                   </select>
                 </div>
-
                 <div>
                   <label className={labelClasses}>Message</label>
-                  <textarea
-                    rows={4}
-                    className={`${inputClasses} resize-none`}
-                    placeholder="Tell us about your project..."
-                  />
+                  <textarea rows={4} className={`${inputClasses} resize-none`} placeholder="Tell us about your project..." />
                 </div>
-
                 <div>
                   <label className={labelClasses}>Preferred Contact Method</label>
                   <div className="flex gap-5 mt-1">
@@ -165,11 +157,7 @@ export default function ContactPage() {
                     ))}
                   </div>
                 </div>
-
-                <button
-                  type="submit"
-                  className="w-full rounded-xl gold-gradient px-6 py-4 text-[15px] font-semibold text-white shadow-[0_4px_15px_rgba(200,150,78,0.3)] transition-all hover:shadow-[0_6px_25px_rgba(200,150,78,0.45)] hover:scale-[1.01] tracking-wide"
-                >
+                <button type="submit" className="w-full rounded-xl gold-gradient px-6 py-4 text-[15px] font-semibold text-white shadow-[0_4px_15px_rgba(200,150,78,0.3)] transition-all hover:shadow-[0_6px_25px_rgba(200,150,78,0.45)] hover:scale-[1.01] tracking-wide">
                   Send Message
                 </button>
               </form>
@@ -184,7 +172,6 @@ export default function ContactPage() {
                     ))}
                   </select>
                 </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className={labelClasses}>Zip Code</label>
@@ -200,7 +187,6 @@ export default function ContactPage() {
                     </select>
                   </div>
                 </div>
-
                 <div>
                   <label className={labelClasses}>Timeline</label>
                   <select required className={inputClasses}>
@@ -210,12 +196,9 @@ export default function ContactPage() {
                     ))}
                   </select>
                 </div>
-
                 <div>
-                  <label className={labelClasses}>
-                    Photo Upload <span className="text-[#8a817a] font-normal">(optional)</span>
-                  </label>
-                  <div className="rounded-xl border-2 border-dashed border-[#e2ddd6] bg-[#faf8f5] p-8 text-center transition-all duration-200 hover:border-[#c8964e]/40 hover:bg-[#f8f4ef] cursor-pointer">
+                  <label className={labelClasses}>Photo Upload <span className="text-[#8a817a] font-normal">(optional)</span></label>
+                  <div className="rounded-xl border-2 border-dashed border-[#e2ddd6] bg-[#faf8f5] p-8 text-center transition-all duration-200 hover:border-[#c8964e]/40 cursor-pointer">
                     <div className="mx-auto w-12 h-12 rounded-full bg-[#c8964e]/10 flex items-center justify-center mb-3">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#c8964e]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -227,7 +210,6 @@ export default function ContactPage() {
                     <input type="file" accept="image/*" multiple className="hidden" />
                   </div>
                 </div>
-
                 <div className="border-t border-[#e2ddd6] pt-6">
                   <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8a817a] mb-5">Contact Information</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -245,11 +227,7 @@ export default function ContactPage() {
                     <input type="email" required className={inputClasses} placeholder="you@example.com" />
                   </div>
                 </div>
-
-                <button
-                  type="submit"
-                  className="w-full rounded-xl gold-gradient px-6 py-4 text-[15px] font-semibold text-white shadow-[0_4px_15px_rgba(200,150,78,0.3)] transition-all hover:shadow-[0_6px_25px_rgba(200,150,78,0.45)] hover:scale-[1.01] tracking-wide"
-                >
+                <button type="submit" className="w-full rounded-xl gold-gradient px-6 py-4 text-[15px] font-semibold text-white shadow-[0_4px_15px_rgba(200,150,78,0.3)] transition-all hover:shadow-[0_6px_25px_rgba(200,150,78,0.45)] hover:scale-[1.01] tracking-wide">
                   Request Consultation
                 </button>
               </form>
@@ -260,9 +238,7 @@ export default function ContactPage() {
         <div className="mt-8 mb-20 rounded-xl bg-[#111111] border border-neutral-800 p-6 text-center">
           <p className="text-[14px] text-neutral-400">
             Need immediate help? Call us directly at{" "}
-            <a href="tel:2058295282" className="font-semibold text-[#c8964e] hover:underline">
-              205-829-5282
-            </a>
+            <a href="tel:2058295282" className="font-semibold text-[#c8964e] hover:underline">205-829-5282</a>
           </p>
         </div>
       </div>

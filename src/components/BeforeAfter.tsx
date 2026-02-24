@@ -1,14 +1,37 @@
 const projects = [
-  { title: "Master Bathroom Remodel", location: "Mountain Brook, AL", tag: "Bathroom" },
-  { title: "Modern Kitchen Renovation", location: "Vestavia Hills, AL", tag: "Kitchen" },
-  { title: "Custom Tile Shower", location: "Hoover, AL", tag: "Tile" },
-  { title: "Full Home Plumbing", location: "Birmingham, AL", tag: "Plumbing" },
+  {
+    title: "Master Bathroom Remodel",
+    location: "Mountain Brook, AL",
+    tag: "Bathroom",
+    beforeImg: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=800&auto=format&fit=crop",
+    afterImg: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    title: "Modern Kitchen Renovation",
+    location: "Vestavia Hills, AL",
+    tag: "Kitchen",
+    beforeImg: "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=800&auto=format&fit=crop",
+    afterImg: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    title: "Custom Tile Shower",
+    location: "Hoover, AL",
+    tag: "Tile",
+    beforeImg: "https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=800&auto=format&fit=crop",
+    afterImg: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    title: "Full Home Plumbing",
+    location: "Birmingham, AL",
+    tag: "Plumbing",
+    beforeImg: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop",
+    afterImg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
+  },
 ];
 
 export default function BeforeAfter() {
   return (
-    <section id="projects" className="relative py-24 lg:py-32 bg-[#111111] grain-overlay scroll-mt-24 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(200,150,78,0.05)_0%,transparent_60%)]" />
+    <section id="projects" className="relative py-24 lg:py-32 bg-[#111111] scroll-mt-24 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c8964e]/20 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -34,28 +57,24 @@ export default function BeforeAfter() {
               className="group relative rounded-xl overflow-hidden border border-neutral-800 transition-all duration-500 hover:border-gold/30"
             >
               <div className="grid grid-cols-2">
-                <div className="relative aspect-[4/3] bg-gradient-to-br from-neutral-800 to-neutral-900">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    style={{ backgroundImage: `url('${project.beforeImg}')` }}
+                  />
+                  <div className="absolute inset-0 bg-black/20" />
                   <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm rounded-md px-2.5 py-1">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-neutral-300">Before</span>
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-neutral-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                      <circle cx="8.5" cy="8.5" r="1.5" />
-                      <polyline points="21 15 16 10 5 21" />
-                    </svg>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-neutral-200">Before</span>
                   </div>
                 </div>
-                <div className="relative aspect-[4/3] bg-gradient-to-br from-neutral-700 to-neutral-800">
-                  <div className="absolute top-3 left-3 bg-gold/80 backdrop-blur-sm rounded-md px-2.5 py-1">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    style={{ backgroundImage: `url('${project.afterImg}')` }}
+                  />
+                  <div className="absolute inset-0 bg-black/10" />
+                  <div className="absolute top-3 left-3 bg-gold/90 backdrop-blur-sm rounded-md px-2.5 py-1">
                     <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-white">After</span>
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-neutral-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                      <circle cx="8.5" cy="8.5" r="1.5" />
-                      <polyline points="21 15 16 10 5 21" />
-                    </svg>
                   </div>
                 </div>
               </div>
