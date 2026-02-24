@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero-bg-new.jpg')" }}
+        style={{ backgroundImage: "url('https://www.homeresolutionllc.com/wp-content/uploads/2023/05/iStock-1208210894-1536x1024.webp')" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/50" />
 
@@ -21,7 +21,7 @@ export default function Hero() {
           Transformations
         </h1>
 
-        <p className="animate-fade-in-up delay-200 mt-7 text-[15px] sm:text-[17px] text-white/90 font-normal leading-[1.8] max-w-lg mx-auto">
+        <p className="animate-fade-in-up delay-200 mt-7 text-[16px] sm:text-[18px] text-white/95 font-medium leading-[1.8] tracking-[0.01em] max-w-lg mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]">
           Residential construction, renovation, and master-level plumbing delivered with craftsmanship and attention to detail.
         </p>
 
