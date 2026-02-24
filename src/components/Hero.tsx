@@ -7,28 +7,28 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/50" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-8 text-center py-32">
         <div className="animate-fade-in-up">
-          <p className="text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.35em] text-[#c8964e] mb-6">
+          <p className="text-[12px] sm:text-[13px] font-semibold uppercase tracking-[0.3em] text-[#c8964e] mb-8">
             Birmingham, Alabama
           </p>
         </div>
 
-        <h1 className="animate-fade-in-up delay-100 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.08] tracking-tight">
+        <h1 className="animate-fade-in-up delay-100 font-display text-[40px] sm:text-[56px] md:text-[68px] lg:text-[80px] text-white leading-[1.05] tracking-[-0.02em]">
           Premier Home<br />
-          <span className="text-gradient-gold">Transformations</span> in Birmingham
+          Transformations
         </h1>
 
-        <p className="animate-fade-in-up delay-200 mt-6 text-[16px] sm:text-[18px] text-white font-medium leading-[1.7] max-w-2xl mx-auto">
+        <p className="animate-fade-in-up delay-200 mt-7 text-[15px] sm:text-[17px] text-white/90 font-normal leading-[1.8] max-w-lg mx-auto">
           Residential construction, renovation, and master-level plumbing delivered with craftsmanship and attention to detail.
         </p>
 
         <div className="animate-fade-in-up delay-300 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
           <a
             href="tel:2058295282"
-            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#c8964e] px-8 py-4 text-[14px] font-semibold text-white shadow-[0_4px_24px_rgba(200,150,78,0.35)] transition-all duration-200 hover:bg-[#b07d3a] hover:shadow-[0_6px_32px_rgba(200,150,78,0.5)] hover:scale-[1.02]"
+            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#c8964e] px-7 sm:px-8 py-3.5 sm:py-4 text-[13px] sm:text-[14px] font-semibold text-white shadow-[0_4px_24px_rgba(200,150,78,0.35)] transition-all duration-200 hover:bg-[#b07d3a] hover:shadow-[0_6px_32px_rgba(200,150,78,0.5)] hover:scale-[1.02]"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -37,9 +37,9 @@ export default function Hero() {
           </a>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.06] backdrop-blur-sm px-8 py-4 text-[14px] font-semibold text-white transition-all duration-200 hover:bg-white/[0.12] hover:border-white/40"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/[0.08] backdrop-blur-sm px-7 sm:px-8 py-3.5 sm:py-4 text-[13px] sm:text-[14px] font-semibold text-white transition-all duration-200 hover:bg-white/[0.15] hover:border-white/50"
           >
-            Get a Free Quote
+            Get a Free Estimate
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
@@ -47,7 +47,7 @@ export default function Hero() {
           </Link>
         </div>
 
-        <div className="animate-fade-in-up delay-400 mt-16 flex items-center justify-center gap-5 flex-wrap">
+        <div className="animate-fade-in-up delay-400 mt-14 flex items-center justify-center gap-5 flex-wrap">
           <div className="flex items-center gap-1.5">
             {[...Array(5)].map((_, i) => (
               <svg key={i} xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 text-[#c8964e] fill-[#c8964e]" viewBox="0 0 24 24">

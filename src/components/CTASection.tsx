@@ -7,7 +7,7 @@ export default function CTASection() {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/cta-bg.jpg')" }}
       />
-      <div className="absolute inset-0 bg-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/70 to-black/60" />
 
       <div className="relative z-10 mx-auto max-w-3xl px-6 sm:px-8 text-center">
         <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8964e] mb-5">Get Started</p>
@@ -16,7 +16,7 @@ export default function CTASection() {
           Ready to Transform Your Home?
         </h2>
 
-        <p className="mt-5 text-[16px] text-white/50 leading-relaxed max-w-lg mx-auto">
+        <p className="mt-5 text-[16px] text-white font-medium leading-relaxed max-w-lg mx-auto">
           No hidden fees, no surprises. Just honest pricing and quality work from a team you can trust.
         </p>
 
@@ -33,7 +33,7 @@ export default function CTASection() {
           </Link>
           <a
             href="tel:2058295282"
-            className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/[0.06] backdrop-blur-sm px-8 py-4 text-[14px] font-semibold text-white transition-all duration-200 hover:bg-white/[0.12]"
+            className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/[0.08] backdrop-blur-sm px-8 py-4 text-[14px] font-semibold text-white transition-all duration-200 hover:bg-white/[0.15]"
           >
             Call (205) 829-5282
           </a>
