@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import ScrollReveal from "./ScrollReveal";
 
 const reviews = [
   {
@@ -59,7 +60,7 @@ export default function Testimonials() {
       <div className="absolute inset-0 bg-black/54" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,rgba(200,150,78,0.12),transparent_40%),radial-gradient(circle_at_10%_90%,rgba(200,150,78,0.08),transparent_45%)]" />
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
-        <div className="relative text-center mb-12">
+        <ScrollReveal className="relative text-center mb-12">
           <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8964e] mb-4">What Our Clients Say</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.1]">
             5-Star Reviews
@@ -72,14 +73,14 @@ export default function Testimonials() {
             ))}
             <span className="text-[14px] text-white/50 ml-2 font-medium">5.0 on Google</span>
           </div>
-        </div>
+        </ScrollReveal>
 
-        <div className="relative mx-auto max-w-2xl">
+        <ScrollReveal delay={100} className="relative mx-auto max-w-2xl">
           <div className="relative rounded-[28px] border border-white/[0.12] bg-[linear-gradient(165deg,rgba(255,255,255,0.07),rgba(255,255,255,0.02))] p-6 sm:p-10 shadow-[0_28px_80px_rgba(0,0,0,0.35)] transition-all duration-500 ease-out">
             <span className="absolute left-5 top-4 font-display text-5xl leading-none text-[#c8964e]/45 sm:left-8 sm:top-6 sm:text-6xl">
               &ldquo;
             </span>
-            <p className="relative mt-6 text-[15px] sm:text-[16px] text-white/85 leading-[1.8] text-center min-h-[7rem] sm:min-h-[6.5rem]">
+            <p className="relative mt-6 text-[15px] sm:text-[16px] text-white leading-[1.8] text-center min-h-[7rem] sm:min-h-[6.5rem]">
               {getReviewPreview(activeReview.text)}
             </p>
             <p className="mt-2 text-center">
@@ -87,7 +88,7 @@ export default function Testimonials() {
                 href={googleReviewUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[12px] uppercase tracking-[0.16em] text-[#c8964e]/90 hover:text-[#f0d6ac] transition-colors"
+                className="text-[12px] uppercase tracking-[0.16em] text-white/70 underline underline-offset-4 hover:text-white transition-colors"
               >
                 Read full review
               </a>
@@ -147,7 +148,7 @@ export default function Testimonials() {
               </svg>
             </a>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

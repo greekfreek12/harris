@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useComingSoon } from "./ComingSoonAlert";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -15,8 +14,6 @@ const navLinks = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const comingSoon = useComingSoon();
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -60,12 +57,12 @@ export default function Navbar() {
             >
               (205) 829-5282
             </a>
-            <button
-              onClick={comingSoon}
+            <Link
+              href="/#quote"
               className="rounded-full bg-[#c8964e] px-5 py-2 text-[13px] font-semibold text-white transition-all duration-200 hover:bg-[#b07d3a] shadow-[0_2px_8px_rgba(200,150,78,0.25)]"
             >
               Request a Quote
-            </button>
+            </Link>
           </div>
 
           <button
@@ -103,12 +100,13 @@ export default function Navbar() {
             >
               (205) 829-5282
             </a>
-            <button
-              onClick={() => { setMobileOpen(false); comingSoon(); }}
+            <Link
+              href="/#quote"
+              onClick={() => setMobileOpen(false)}
               className="block w-full text-center py-3 text-[14px] font-semibold text-white bg-[#c8964e] rounded-xl"
             >
               Request a Quote
-            </button>
+            </Link>
           </div>
         </div>
       </div>

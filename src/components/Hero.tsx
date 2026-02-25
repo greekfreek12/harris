@@ -1,35 +1,31 @@
 "use client";
 
-import { useComingSoon } from "./ComingSoonAlert";
-
 export default function Hero() {
-  const comingSoon = useComingSoon();
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center animate-ken-burns"
         style={{ backgroundImage: "url('https://www.homeresolutionllc.com/wp-content/uploads/2023/05/iStock-1208210894-1536x1024.webp')" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/35" />
+      <div className="animate-hero-overlay absolute inset-0 bg-gradient-to-b from-black/65 via-black/55 to-black/40" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-8 text-center py-32">
-        <div className="animate-fade-in-up">
-          <p className="text-[12px] sm:text-[13px] font-semibold uppercase tracking-[0.3em] text-[#c8964e] mb-8">
+        <div className="animate-fade-in-up delay-400">
+          <p className="text-[12px] sm:text-[13px] font-semibold uppercase tracking-[0.3em] text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] mb-8">
             Birmingham, Alabama
           </p>
         </div>
 
-        <h1 className="animate-fade-in-up delay-100 font-display text-[40px] sm:text-[56px] md:text-[68px] lg:text-[80px] text-white leading-[1.05] tracking-[-0.02em]">
+        <h1 className="animate-fade-in-up delay-500 font-display text-[40px] sm:text-[56px] md:text-[68px] lg:text-[80px] text-white leading-[1.05] tracking-[-0.02em] drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
           Premier Home<br />
           Transformations
         </h1>
 
-        <p className="animate-fade-in-up delay-200 mt-7 text-[16px] sm:text-[18px] text-white/95 font-medium leading-[1.8] tracking-[0.01em] max-w-lg mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]">
+        <p className="animate-fade-in-up delay-600 mt-7 text-[16px] sm:text-[18px] text-white/95 font-medium leading-[1.8] tracking-[0.01em] max-w-lg mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]">
           Residential construction, renovation, and master-level plumbing delivered with craftsmanship and attention to detail.
         </p>
 
-        <div className="animate-fade-in-up delay-300 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="animate-fade-in-up delay-600 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
           <a
             href="tel:2058295282"
             className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#c8964e] px-7 sm:px-8 py-3.5 sm:py-4 text-[13px] sm:text-[14px] font-semibold text-white shadow-[0_4px_24px_rgba(200,150,78,0.35)] transition-all duration-200 hover:bg-[#b07d3a] hover:shadow-[0_6px_32px_rgba(200,150,78,0.5)] hover:scale-[1.02]"
@@ -39,8 +35,8 @@ export default function Hero() {
             </svg>
             Call (205) 829-5282
           </a>
-          <button
-            onClick={comingSoon}
+          <a
+            href="#quote"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/[0.08] backdrop-blur-sm px-7 sm:px-8 py-3.5 sm:py-4 text-[13px] sm:text-[14px] font-semibold text-white transition-all duration-200 hover:bg-white/[0.15] hover:border-white/50"
           >
             Get a Free Estimate
@@ -48,9 +44,8 @@ export default function Hero() {
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
-          </button>
+          </a>
         </div>
-
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#f8f6f3] to-transparent" />

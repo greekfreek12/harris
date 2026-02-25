@@ -6,6 +6,13 @@ type SubmitState = "idle" | "submitting" | "success" | "error";
 
 const initialForm = { name: "", phone: "", message: "" };
 
+function formatPhone(value: string) {
+  const digits = value.replace(/\D/g, "").slice(0, 10);
+  if (digits.length <= 3) return digits;
+  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+}
+
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -90,13 +97,14 @@ export default function ChatWidget() {
           >
             ×
           </button>
-          <div className="pr-10">
-            <div className="inline-flex items-center rounded-full border border-[#d8d2c8] bg-white px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#6b6257]">
-              Logo Here
+          <div className="flex items-center justify-center gap-2.5 pt-1">
+            <div className="h-8 w-8 shrink-0 rounded-full bg-[#c8964e] flex items-center justify-center text-[10px] font-bold text-white">
+              HP
             </div>
+            <span className="font-display text-[15px] text-[#1a1a1a] tracking-wide">Harris Plumbing</span>
           </div>
-          <h3 className="mt-4 font-display text-[24px] sm:text-[26px] leading-[1.08] text-[#1a1a1a]">How Can We Help?</h3>
-          <p className="mt-2.5 text-[13px] leading-relaxed text-[#5e5852]">
+          <h3 className="mt-4 font-display text-[24px] sm:text-[26px] leading-[1.08] text-[#1a1a1a] text-center">How Can We Help?</h3>
+          <p className="mt-2.5 text-[13px] leading-relaxed text-[#5e5852] text-center">
             Share your name and number. We will reach out shortly.
           </p>
 
@@ -112,22 +120,25 @@ export default function ChatWidget() {
                 value={form.name}
                 onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
                 placeholder="Name"
-                className="w-full rounded-xl border border-[#ddd4c9] bg-white px-3 py-2.5 text-[14px] text-[#1a1a1a] outline-none transition-colors focus:border-[#c8964e]"
+                autoComplete="name"
+                className="w-full rounded-xl border border-[#ddd4c9] bg-white px-3 py-2.5 text-[16px] text-[#1a1a1a] outline-none transition-colors focus:border-[#c8964e]"
               />
               <input
                 required
                 type="tel"
+                inputMode="tel"
                 value={form.phone}
-                onChange={(e) => setForm((prev) => ({ ...prev, phone: e.target.value }))}
-                placeholder="Phone Number"
-                className="w-full rounded-xl border border-[#ddd4c9] bg-white px-3 py-2.5 text-[14px] text-[#1a1a1a] outline-none transition-colors focus:border-[#c8964e]"
+                onChange={(e) => setForm((prev) => ({ ...prev, phone: formatPhone(e.target.value) }))}
+                placeholder="(205) 555-0123"
+                autoComplete="tel"
+                className="w-full rounded-xl border border-[#ddd4c9] bg-white px-3 py-2.5 text-[16px] text-[#1a1a1a] outline-none transition-colors focus:border-[#c8964e]"
               />
               <textarea
                 rows={3}
                 value={form.message}
                 onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))}
                 placeholder="What do you need help with? (optional)"
-                className="w-full resize-none rounded-xl border border-[#ddd4c9] bg-white px-3 py-2.5 text-[14px] text-[#1a1a1a] outline-none transition-colors focus:border-[#c8964e]"
+                className="w-full resize-none rounded-xl border border-[#ddd4c9] bg-white px-3 py-2.5 text-[16px] text-[#1a1a1a] outline-none transition-colors focus:border-[#c8964e]"
               />
               {status === "error" && <p className="text-[12px] text-[#9f2f2f]">{error}</p>}
               <button

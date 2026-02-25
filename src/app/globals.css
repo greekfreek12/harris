@@ -109,6 +109,16 @@ body {
   100% { transform: scale(1.08); }
 }
 
+@keyframes heroOverlay {
+  0% { opacity: 0; }
+  25% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-hero-overlay {
+  animation: heroOverlay 2.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
 .animate-ken-burns {
   animation: kenBurns 18s ease-in-out alternate infinite;
   will-change: transform;
