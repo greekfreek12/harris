@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import ChatWidget from "@/components/ChatWidget";
 import ClientProviders from "@/components/ClientProviders";
 import "./globals.css";
 
@@ -35,6 +36,7 @@ export default function RootLayout({
         <ClientProviders>
           <Navbar />
           <main>{children}</main>
+          <ChatWidget />
         </ClientProviders>
       </body>
     </html>

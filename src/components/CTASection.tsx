@@ -9,7 +9,7 @@ export default function CTASection() {
     <section className="relative py-28 lg:py-36 overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/cta-bg.jpg')" }}
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1758448755927-e5c5ae14790c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGRyZWFtJTIwa2l0Y2hlbnxlbnwwfHwwfHx8MA%3D%3D')" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/70 to-black/60" />
 

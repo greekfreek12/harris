@@ -5,13 +5,13 @@ import { useComingSoon } from "./ComingSoonAlert";
 const services = [
   {
     title: "Home Improvements",
-    desc: "Whole-home renovations, custom remodels, and new residential construction built with long-term durability in mind.",
+    desc: "New construction, full-home renovations, kitchen and bathroom remodeling, room additions, and custom interior upgrades built for long-term value.",
     button: "Explore Services",
     image: "/images/svc-home.jpg",
   },
   {
     title: "Plumbing Services",
-    desc: "Master-level plumbing for new builds, renovations, and standalone service calls across Birmingham.",
+    desc: "High-value plumbing projects including whole-home repipes, sewer and water line replacement, water heater installs, and rough-in plumbing for remodels/new builds.",
     button: "View Plumbing Services",
     image: "/images/svc-plumbing-new.jpg",
   },
@@ -34,10 +34,11 @@ export default function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((s) => (
+          {services.map((s, index) => (
             <div
               key={s.title}
-              className="group rounded-2xl overflow-hidden bg-white border border-[#e8e3dc] shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1 hover:border-[#c8964e]/30"
+              className="group rounded-2xl overflow-hidden bg-white border border-[#e8e3dc] shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1 hover:border-[#c8964e]/30 animate-fade-in-up"
+              style={{ animationDelay: `${index * 120}ms` }}
             >
               <div className="relative h-56 sm:h-72 md:h-80 overflow-hidden">
                 <div
@@ -47,11 +48,12 @@ export default function Services() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
               </div>
               <div className="p-6 sm:p-8 text-center">
+                <div className="mx-auto mb-4 h-px w-14 bg-gradient-to-r from-transparent via-[#c8964e] to-transparent" />
                 <h3 className="font-display text-[22px] sm:text-[28px] text-[#1a1a1a] tracking-tight">{s.title}</h3>
                 <p className="mt-3 text-[14px] sm:text-[15px] text-[#6b6560] leading-relaxed">{s.desc}</p>
                 <button
                   onClick={comingSoon}
-                  className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#c8964e] px-5 sm:px-7 py-2.5 sm:py-3 text-[13px] sm:text-[14px] font-semibold text-white shadow-[0_2px_12px_rgba(200,150,78,0.25)] transition-all duration-200 hover:bg-[#b07d3a] hover:shadow-[0_4px_20px_rgba(200,150,78,0.4)] hover:scale-[1.02]"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#c8964e] px-5 sm:px-7 py-2.5 sm:py-3 text-[13px] sm:text-[14px] font-semibold text-white shadow-[0_2px_12px_rgba(200,150,78,0.35)] transition-all duration-200 hover:bg-[#b07d3a] hover:shadow-[0_4px_20px_rgba(200,150,78,0.5)] hover:scale-[1.02]"
                 >
                   {s.button}
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

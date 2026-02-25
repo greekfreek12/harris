@@ -5,19 +5,16 @@ import { useRef, useEffect, useState } from "react";
 const reviews = [
   {
     name: "Maureen C.",
-    badge: "Local Guide",
     text: "Look no further for your plumbing and home improvement needs — Harris Plumbing and Home Improvements is the one-stop solution you've been searching for! Their prompt response and professional demeanor immediately put us at ease. The level of care and attention to detail they exhibited throughout the entire process was truly exceptional.",
     rating: 5,
   },
   {
     name: "Elizabeth B.",
-    badge: null,
     text: "Can't recommend Harris Plumbing and Home Improvement enough! Fast response and fair. Takes the time to make sure you understand everything about the job. Even called the day after the repair to make sure everything was fine! He'll be my go to plumber!",
     rating: 5,
   },
   {
     name: "Eric B.",
-    badge: "Local Guide",
     text: "WOW! Mr. Harris and his team were a God sent to my family. We needed a water line replaced and he came out the same day. He was professional and kind with a heart to exemplify customer service like no other business. He came in budget and wanted to make sure that we were satisfied with the job.",
     rating: 5,
   },
@@ -49,13 +46,18 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative overflow-hidden py-24 lg:py-28 bg-[#111111] scroll-mt-20"
+      className="relative overflow-hidden py-24 lg:py-28 scroll-mt-20"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={() => setPaused(true)}
       onTouchEnd={() => setPaused(false)}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,rgba(200,150,78,0.16),transparent_40%),radial-gradient(circle_at_10%_90%,rgba(200,150,78,0.1),transparent_45%)]" />
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1576698483491-8c43f0862543?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJhdGhyb29tfGVufDB8fDB8fHww')" }}
+      />
+      <div className="absolute inset-0 bg-black/54" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,rgba(200,150,78,0.12),transparent_40%),radial-gradient(circle_at_10%_90%,rgba(200,150,78,0.08),transparent_45%)]" />
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <div className="relative text-center mb-12">
           <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8964e] mb-4">What Our Clients Say</p>
@@ -90,16 +92,8 @@ export default function Testimonials() {
                 Read full review
               </a>
             </p>
-            <div className="mt-6 flex items-center justify-center gap-3">
-              <div className="w-11 h-11 rounded-full bg-[#c8964e]/20 flex items-center justify-center text-[#c8964e] text-[15px] font-bold">
-                {activeReview.name.charAt(0)}
-              </div>
-              <div className="text-left">
-                <p className="text-[14px] font-semibold text-white">{activeReview.name}</p>
-                {activeReview.badge && (
-                  <p className="text-[11px] text-[#c8964e]/75 tracking-wide">{activeReview.badge}</p>
-                )}
-              </div>
+            <div className="mt-6 flex items-center justify-center">
+              <p className="text-[14px] font-semibold text-white/80">— {activeReview.name}</p>
             </div>
           </div>
 
@@ -143,7 +137,7 @@ export default function Testimonials() {
               href={googleReviewUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full justify-center sm:w-auto items-center gap-2 rounded-full border border-[#c8964e]/40 px-5 py-3 text-[13px] font-semibold text-[#c8964e] transition-all hover:bg-[#c8964e]/12 hover:border-[#c8964e]"
+              className="inline-flex w-full justify-center sm:w-auto items-center gap-2 rounded-full border border-white/70 bg-white/95 px-5 py-3 text-[13px] font-semibold text-[#222] shadow-[0_8px_28px_rgba(0,0,0,0.28)] transition-all hover:bg-white hover:border-white"
             >
               Leave a Review
               <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

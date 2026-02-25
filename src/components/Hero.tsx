@@ -8,10 +8,10 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center animate-ken-burns"
         style={{ backgroundImage: "url('https://www.homeresolutionllc.com/wp-content/uploads/2023/05/iStock-1208210894-1536x1024.webp')" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/35" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-8 text-center py-32">
         <div className="animate-fade-in-up">

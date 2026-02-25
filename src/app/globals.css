@@ -104,6 +104,16 @@ body {
   100% { background-position: 200% 0; }
 }
 
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.animate-ken-burns {
+  animation: kenBurns 18s ease-in-out alternate infinite;
+  will-change: transform;
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
