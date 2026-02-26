@@ -48,7 +48,7 @@ export default function Services() {
                 <div className="p-6 sm:p-8 text-center">
                   <div className="mx-auto mb-4 h-px w-14 bg-gradient-to-r from-transparent via-[#c8964e] to-transparent" />
                   <h3 className="font-display text-[22px] sm:text-[28px] text-[#1a1a1a] tracking-tight">{s.title}</h3>
-                  <p className="mt-3 text-[14px] sm:text-[15px] text-[#6b6560] leading-relaxed">{s.desc}</p>
+                  <p className="mt-3 text-[15px] sm:text-[16px] text-[#3a3530] leading-relaxed">{s.desc}</p>
                   <Link
                     href={s.href}
                     className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#c8964e] px-5 sm:px-7 py-2.5 sm:py-3 text-[13px] sm:text-[14px] font-semibold text-white shadow-[0_2px_12px_rgba(200,150,78,0.35)] transition-all duration-200 hover:bg-[#b07d3a] hover:shadow-[0_4px_20px_rgba(200,150,78,0.5)] hover:scale-[1.02]"

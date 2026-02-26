@@ -7,6 +7,7 @@ interface Props {
   className?: string;
   delay?: number;
   direction?: "up" | "left" | "right" | "none";
+  scale?: boolean;
 }
 
 export default function ScrollReveal({
@@ -14,6 +15,7 @@ export default function ScrollReveal({
   className = "",
   delay = 0,
   direction = "up",
+  scale = true,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -28,23 +30,27 @@ export default function ScrollReveal({
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -32px 0px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
-  const translateMap = {
-    up: visible ? "translateY(0)" : "translateY(36px)",
-    left: visible ? "translateX(0)" : "translateX(-36px)",
-    right: visible ? "translateX(0)" : "translateX(36px)",
-    none: "none",
+  const getTransform = () => {
+    if (visible) return scale ? "translateY(0px) scale(1)" : "translateY(0px)";
+    const move = {
+      up: "translateY(32px)",
+      left: "translateX(-32px)",
+      right: "translateX(32px)",
+      none: "translateY(0px)",
+    }[direction];
+    return scale ? `${move} scale(0.97)` : move;
   };
 
   const style: CSSProperties = {
     opacity: visible ? 1 : 0,
-    transform: translateMap[direction],
-    transition: `opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
+    transform: getTransform(),
+    transition: `opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
     willChange: "opacity, transform",
   };
 

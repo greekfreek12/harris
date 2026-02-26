@@ -61,7 +61,7 @@ export default function Testimonials() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,rgba(200,150,78,0.12),transparent_40%),radial-gradient(circle_at_10%_90%,rgba(200,150,78,0.08),transparent_45%)]" />
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <ScrollReveal className="relative text-center mb-12">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8964e] mb-4">What Our Clients Say</p>
+          <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-white/55 mb-4">What Our Clients Say</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.1]">
             5-Star Reviews
           </h2>
@@ -71,7 +71,7 @@ export default function Testimonials() {
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
               </svg>
             ))}
-            <span className="text-[14px] text-white/50 ml-2 font-medium">5.0 on Google</span>
+            <span className="text-[14px] text-white/65 ml-2 font-medium">5.0 on Google</span>
           </div>
         </ScrollReveal>
 
@@ -80,21 +80,24 @@ export default function Testimonials() {
             <span className="absolute left-5 top-4 font-display text-5xl leading-none text-[#c8964e]/45 sm:left-8 sm:top-6 sm:text-6xl">
               &ldquo;
             </span>
-            <p className="relative mt-6 text-[15px] sm:text-[16px] text-white leading-[1.8] text-center min-h-[7rem] sm:min-h-[6.5rem]">
+            <p className="relative mt-6 text-[17px] sm:text-[18px] font-light text-white leading-[1.9] text-center tracking-[0.01em] min-h-[7rem] sm:min-h-[6.5rem]">
               {getReviewPreview(activeReview.text)}
             </p>
-            <p className="mt-2 text-center">
+            <p className="mt-4 text-center">
               <a
                 href={googleReviewUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[12px] uppercase tracking-[0.16em] text-white/70 underline underline-offset-4 hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-4 py-1.5 text-[12px] font-medium text-white/70 transition-all hover:border-white/40 hover:bg-white/10 hover:text-white"
               >
                 Read full review
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                </svg>
               </a>
             </p>
             <div className="mt-6 flex items-center justify-center">
-              <p className="text-[14px] font-semibold text-white/80">— {activeReview.name}</p>
+              <p className="text-[15px] font-semibold text-white">— {activeReview.name}</p>
             </div>
           </div>
 

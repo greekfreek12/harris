@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 type ServiceType = "plumbing" | "home-improvement" | null;
 
@@ -34,14 +34,22 @@ function formatPhone(value: string) {
 }
 
 const inputClasses =
-  "w-full rounded-xl border border-white/15 bg-white/[0.08] px-4 py-3.5 text-[16px] text-white placeholder:text-white/40 transition-all duration-200 focus:outline-none focus:border-[#c8964e] focus:bg-white/[0.11]";
+  "w-full rounded-xl border border-[#e2ddd6] bg-white px-4 py-3.5 text-[16px] text-[#1a1a1a] placeholder:text-[#b5afa8] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#c8964e]/20 focus:border-[#c8964e]";
 
-const labelClasses = "block text-[13px] font-semibold text-white/75 mb-2";
+const labelClasses = "block text-[13px] font-semibold text-[#1a1a1a] mb-2";
 
 export default function QuoteSection() {
   const [service, setService] = useState<ServiceType>(null);
   const [submitted, setSubmitted] = useState(false);
   const [phone, setPhone] = useState("");
+  const formRef = useRef<HTMLDivElement>(null);
+
+  function selectService(type: ServiceType) {
+    setService(type);
+    setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,36 +57,36 @@ export default function QuoteSection() {
   };
 
   return (
-    <section id="quote" className="bg-[#0d0d0d] py-24 lg:py-32 scroll-mt-20">
+    <section id="quote" className="bg-[#f8f6f3] py-24 lg:py-32 scroll-mt-20 border-t border-[#ede8e1]">
       <div className="mx-auto max-w-2xl px-6 sm:px-8">
 
         {/* Section label + heading */}
         <div className="text-center mb-12">
           <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8964e] mb-4">Free Estimate</p>
-          <h2 className="font-display text-4xl sm:text-5xl text-white tracking-tight leading-[1.08]">
+          <h2 className="font-display text-4xl sm:text-5xl text-[#1a1a1a] tracking-tight leading-[1.08]">
             Get a Free Quote
           </h2>
-          <p className="mt-4 text-[16px] text-white/65 max-w-sm mx-auto leading-relaxed">
-            What can we help you with today?
+          <p className="mt-4 text-[16px] text-[#6b6560] max-w-md mx-auto leading-relaxed">
+            Tell us about your project and we&apos;ll get back to you with a clear, honest estimate — no obligation.
           </p>
         </div>
 
         {submitted ? (
           /* Success state */
-          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-12 text-center">
-            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#c8964e] shadow-[0_4px_20px_rgba(200,150,78,0.4)]">
+          <div className="rounded-2xl border border-[#e2ddd6] bg-white p-12 text-center shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#c8964e] shadow-[0_4px_20px_rgba(200,150,78,0.3)]">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
-            <h3 className="font-display text-3xl text-white">We Got It</h3>
-            <p className="mt-3 text-[15px] text-white/45 leading-relaxed">
+            <h3 className="font-display text-3xl text-[#1a1a1a]">We Got It</h3>
+            <p className="mt-3 text-[15px] text-[#6b6560] leading-relaxed">
               Someone will reach out shortly. For urgent issues call{" "}
               <a href="tel:2058295282" className="text-[#c8964e] font-semibold hover:underline">205-829-5282</a>.
             </p>
             <button
               onClick={() => { setSubmitted(false); setService(null); setPhone(""); }}
-              className="mt-8 inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-2.5 text-[13px] font-semibold text-white/60 hover:text-white hover:border-white/30 transition-colors"
+              className="mt-8 inline-flex items-center justify-center rounded-full border border-[#e2ddd6] px-6 py-2.5 text-[13px] font-semibold text-[#6b6560] hover:text-[#1a1a1a] hover:border-[#c8964e] transition-colors"
             >
               Submit Another
             </button>
@@ -90,11 +98,11 @@ export default function QuoteSection() {
               {/* Plumbing */}
               <button
                 type="button"
-                onClick={() => setService("plumbing")}
-                className={`group relative rounded-2xl border p-6 text-left transition-all duration-200 ${
+                onClick={() => selectService("plumbing")}
+                className={`group relative rounded-2xl border-2 p-6 text-left transition-all duration-200 ${
                   service === "plumbing"
-                    ? "border-[#c8964e] bg-[#c8964e]/10 shadow-[0_0_30px_rgba(200,150,78,0.15)]"
-                    : "border-white/[0.08] bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]"
+                    ? "border-[#c8964e] bg-[#fff7ea] shadow-[0_4px_20px_rgba(200,150,78,0.15)]"
+                    : "border-[#e2ddd6] bg-white hover:border-[#c8964e]/50 hover:shadow-[0_4px_14px_rgba(0,0,0,0.06)]"
                 }`}
               >
                 {service === "plumbing" && (
@@ -104,23 +112,23 @@ export default function QuoteSection() {
                     </svg>
                   </span>
                 )}
-                <div className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl transition-colors ${service === "plumbing" ? "bg-[#c8964e]" : "bg-white/[0.07]"}`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${service === "plumbing" ? "text-white" : "text-white/50"}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <div className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl transition-colors ${service === "plumbing" ? "bg-[#c8964e]" : "bg-[#f0ebe3]"}`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${service === "plumbing" ? "text-white" : "text-[#c8964e]"}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
                   </svg>
                 </div>
-                <p className={`font-semibold text-[15px] transition-colors ${service === "plumbing" ? "text-white" : "text-white/85"}`}>Plumbing</p>
-                <p className="mt-1 text-[13px] text-white/55 leading-snug">Repairs, installs &amp; emergencies</p>
+                <p className="font-semibold text-[15px] text-[#1a1a1a]">Plumbing</p>
+                <p className="mt-1 text-[13px] text-[#6b6560] leading-snug">Repairs, installs &amp; emergencies</p>
               </button>
 
               {/* Home Improvement */}
               <button
                 type="button"
-                onClick={() => setService("home-improvement")}
-                className={`group relative rounded-2xl border p-6 text-left transition-all duration-200 ${
+                onClick={() => selectService("home-improvement")}
+                className={`group relative rounded-2xl border-2 p-6 text-left transition-all duration-200 ${
                   service === "home-improvement"
-                    ? "border-[#c8964e] bg-[#c8964e]/10 shadow-[0_0_30px_rgba(200,150,78,0.15)]"
-                    : "border-white/[0.08] bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]"
+                    ? "border-[#c8964e] bg-[#fff7ea] shadow-[0_4px_20px_rgba(200,150,78,0.15)]"
+                    : "border-[#e2ddd6] bg-white hover:border-[#c8964e]/50 hover:shadow-[0_4px_14px_rgba(0,0,0,0.06)]"
                 }`}
               >
                 {service === "home-improvement" && (
@@ -130,24 +138,28 @@ export default function QuoteSection() {
                     </svg>
                   </span>
                 )}
-                <div className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl transition-colors ${service === "home-improvement" ? "bg-[#c8964e]" : "bg-white/[0.07]"}`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${service === "home-improvement" ? "text-white" : "text-white/50"}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <div className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl transition-colors ${service === "home-improvement" ? "bg-[#c8964e]" : "bg-[#f0ebe3]"}`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${service === "home-improvement" ? "text-white" : "text-[#c8964e]"}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                     <polyline points="9 22 9 12 15 12 15 22" />
                   </svg>
                 </div>
-                <p className={`font-semibold text-[15px] transition-colors ${service === "home-improvement" ? "text-white" : "text-white/85"}`}>Home Improvement</p>
-                <p className="mt-1 text-[13px] text-white/55 leading-snug">Remodels, renovations &amp; more</p>
+                <p className="font-semibold text-[15px] text-[#1a1a1a]">Home Improvement</p>
+                <p className="mt-1 text-[13px] text-[#6b6560] leading-snug">Remodels, renovations &amp; more</p>
               </button>
             </div>
 
             {/* Form — revealed after selection */}
             {service && (
-              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
-                <div className="border-b border-white/[0.06] px-7 py-4 flex items-center gap-2.5">
-                  <div className="h-1.5 w-1.5 rounded-full bg-[#c8964e]" />
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.15em] text-white/50">
-                    {service === "plumbing" ? "Plumbing Quote" : "Home Improvement Quote"}
+              <div ref={formRef} className="rounded-2xl border border-[#e2ddd6] bg-white overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] scroll-mt-24">
+                <div className="border-b border-[#f0ebe3] bg-[#fdfbf8] px-7 py-7 text-center">
+                  <h3 className="font-display text-[26px] sm:text-[30px] text-[#1a1a1a] tracking-tight leading-tight">
+                    {service === "plumbing" ? "Plumbing Quote Request" : "Home Improvement Quote Request"}
+                  </h3>
+                  <p className="mt-2 text-[14px] text-[#6b6560] leading-relaxed">
+                    {service === "plumbing"
+                      ? "Fill out the form below and we'll get back to you with a fast, honest estimate."
+                      : "Share your project details and we'll put together a clear estimate tailored to your vision."}
                   </p>
                 </div>
 
@@ -171,8 +183,8 @@ export default function QuoteSection() {
                       <div>
                         <label className={labelClasses}>Service Needed</label>
                         <select required className={inputClasses}>
-                          <option value="" className="bg-[#1a1a1a]">Select a service</option>
-                          {plumbingTypes.map((t) => <option key={t} value={t} className="bg-[#1a1a1a]">{t}</option>)}
+                          <option value="">Select a service</option>
+                          {plumbingTypes.map((t) => <option key={t} value={t}>{t}</option>)}
                         </select>
                       </div>
                       <div>
@@ -185,7 +197,7 @@ export default function QuoteSection() {
                           {contactMethods.map((m) => (
                             <label key={m} className="flex items-center gap-2 cursor-pointer">
                               <input type="radio" name="contact" value={m} className="w-4 h-4 accent-[#c8964e]" />
-                              <span className="text-[14px] text-white/50 hover:text-white/80 transition-colors">{m}</span>
+                              <span className="text-[14px] text-[#6b6560] hover:text-[#1a1a1a] transition-colors">{m}</span>
                             </label>
                           ))}
                         </div>
@@ -213,23 +225,23 @@ export default function QuoteSection() {
                       <div>
                         <label className={labelClasses}>Project Type</label>
                         <select required className={inputClasses}>
-                          <option value="" className="bg-[#1a1a1a]">Select a project type</option>
-                          {homeTypes.map((t) => <option key={t} value={t} className="bg-[#1a1a1a]">{t}</option>)}
+                          <option value="">Select a project type</option>
+                          {homeTypes.map((t) => <option key={t} value={t}>{t}</option>)}
                         </select>
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
                           <label className={labelClasses}>Budget</label>
                           <select required className={inputClasses}>
-                            <option value="" className="bg-[#1a1a1a]">Select budget</option>
-                            {budgetRanges.map((r) => <option key={r} value={r} className="bg-[#1a1a1a]">{r}</option>)}
+                            <option value="">Select budget</option>
+                            {budgetRanges.map((r) => <option key={r} value={r}>{r}</option>)}
                           </select>
                         </div>
                         <div>
                           <label className={labelClasses}>Timeline</label>
                           <select required className={inputClasses}>
-                            <option value="" className="bg-[#1a1a1a]">Select timeline</option>
-                            {timelines.map((t) => <option key={t} value={t} className="bg-[#1a1a1a]">{t}</option>)}
+                            <option value="">Select timeline</option>
+                            {timelines.map((t) => <option key={t} value={t}>{t}</option>)}
                           </select>
                         </div>
                       </div>
@@ -243,7 +255,7 @@ export default function QuoteSection() {
                           {contactMethods.map((m) => (
                             <label key={m} className="flex items-center gap-2 cursor-pointer">
                               <input type="radio" name="contact" value={m} className="w-4 h-4 accent-[#c8964e]" />
-                              <span className="text-[14px] text-white/50 hover:text-white/80 transition-colors">{m}</span>
+                              <span className="text-[14px] text-[#6b6560] hover:text-[#1a1a1a] transition-colors">{m}</span>
                             </label>
                           ))}
                         </div>
