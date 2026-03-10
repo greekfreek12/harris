@@ -172,9 +172,9 @@ export default function QuoteSection() {
             {service && (
               <div
                 ref={formRef}
-                className="relative overflow-hidden rounded-[28px] border border-[#e2ddd6] shadow-[0_18px_48px_rgba(0,0,0,0.12)] scroll-mt-24"
+                className="overflow-hidden rounded-[28px] border border-[#e2ddd6] bg-white shadow-[0_18px_48px_rgba(0,0,0,0.12)] scroll-mt-24"
               >
-                <div className="absolute inset-0">
+                <div className="relative h-40 overflow-hidden sm:h-48 lg:h-56">
                   <Image
                     src={serviceContent[service].backgroundImage}
                     alt=""
@@ -183,29 +183,27 @@ export default function QuoteSection() {
                     priority
                     className="object-cover object-center"
                   />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,12,11,0.34)_0%,rgba(19,16,13,0.58)_100%)]" />
                 </div>
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,12,11,0.7)_0%,rgba(19,16,13,0.78)_100%)]" />
-                <div className="relative p-3 sm:p-4">
-                  <div className="overflow-hidden rounded-[24px] border border-white/16 bg-white shadow-[0_12px_34px_rgba(0,0,0,0.12)] lg:bg-white/95 lg:backdrop-blur-md">
-                    <div className="border-b border-[#f0ebe3] bg-[#fdfbf8] px-7 py-7 text-center">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#c8964e]">
+                <div className="border-b border-[#f0ebe3] bg-[#fdfbf8] px-7 py-7 text-center">
+                      <p className="text-[15px] font-semibold tracking-[0.01em] text-[#c8964e] sm:text-[18px]">
                         {serviceContent[service].formIntro}
                       </p>
-                      <h3 className="font-display text-[26px] sm:text-[30px] text-[#1a1a1a] tracking-tight leading-tight">
+                      <a
+                        href="tel:2058295282"
+                        className="mt-2 inline-flex items-center justify-center text-[14px] font-semibold text-[#6b6560] transition-colors hover:text-[#1a1a1a]"
+                      >
+                        205-829-5282
+                      </a>
+                      <h3 className="mt-3 font-display text-[24px] sm:text-[28px] text-[#1a1a1a] tracking-tight leading-tight">
                         {serviceContent[service].formTitle}
                       </h3>
                       <p className="mt-2 text-[14px] text-[#6b6560] leading-relaxed">
                         {serviceContent[service].text}
                       </p>
-                      <a
-                        href="tel:2058295282"
-                        className="mt-4 inline-flex items-center justify-center rounded-full border border-[#d9d3cb] px-4 py-2 text-[13px] font-semibold text-[#3a3530] transition-colors hover:border-[#c8964e] hover:text-[#1a1a1a]"
-                      >
-                        Call 205-829-5282
-                      </a>
-                    </div>
+                </div>
 
-                    <div className="p-7 sm:p-9">
+                <div className="p-7 sm:p-9">
                   {service === "plumbing" ? (
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -237,9 +235,9 @@ export default function QuoteSection() {
                         <label className={labelClasses}>Describe the Issue</label>
                         <textarea rows={3} className={`${inputClasses} resize-none`} placeholder="Any details help us give a better estimate..." />
                       </div>
-                      <div>
+                      <div className="text-center">
                         <label className={labelClasses}>Preferred Contact</label>
-                        <div className="flex gap-5 mt-1">
+                        <div className="mt-1 flex flex-wrap justify-center gap-x-5 gap-y-3">
                           {contactMethods.map((m) => (
                             <label key={m} className="flex items-center gap-2 cursor-pointer">
                               <input type="radio" name="contact" value={m} className="w-4 h-4 accent-[#c8964e]" />
@@ -299,9 +297,9 @@ export default function QuoteSection() {
                         <label className={labelClasses}>Project Details</label>
                         <textarea rows={3} className={`${inputClasses} resize-none`} placeholder="Tell us about your vision — rooms, materials, goals..." />
                       </div>
-                      <div>
+                      <div className="text-center">
                         <label className={labelClasses}>Preferred Contact</label>
-                        <div className="flex gap-5 mt-1">
+                        <div className="mt-1 flex flex-wrap justify-center gap-x-5 gap-y-3">
                           {contactMethods.map((m) => (
                             <label key={m} className="flex items-center gap-2 cursor-pointer">
                               <input type="radio" name="contact" value={m} className="w-4 h-4 accent-[#c8964e]" />
@@ -315,8 +313,6 @@ export default function QuoteSection() {
                       </button>
                     </form>
                   )}
-                    </div>
-                  </div>
                 </div>
               </div>
             )}

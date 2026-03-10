@@ -131,10 +131,16 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
         ) : (
           <div className="overflow-hidden rounded-[28px] border border-white/16 bg-white shadow-[0_18px_54px_rgba(0,0,0,0.2)] lg:bg-white/95 lg:backdrop-blur-md">
               <div className="border-b border-[#f0ebe3] bg-[#fcfaf7] px-7 py-7 text-center">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#c8964e]">
+                <p className="text-[15px] font-semibold tracking-[0.01em] text-[#c8964e] sm:text-[18px]">
                   {content.formIntro}
                 </p>
-                <h3 className="font-display text-[28px] leading-tight tracking-tight text-[#1a1a1a] sm:text-[32px]">
+                <a
+                  href="tel:2058295282"
+                  className="mt-2 inline-flex items-center justify-center text-[14px] font-semibold text-[#6b6560] transition-colors hover:text-[#1a1a1a]"
+                >
+                  205-829-5282
+                </a>
+                <h3 className="mt-3 font-display text-[24px] leading-tight tracking-tight text-[#1a1a1a] sm:text-[28px]">
                   {content.formTitle}
                 </h3>
                 <p className="mt-2 text-[14px] leading-relaxed text-[#6b6560]">
@@ -142,12 +148,6 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
                     ? "Need sewer work, a repipe, a water heater, or general plumbing help? Start here."
                     : "Need renovation, new construction, or a major interior upgrade? Start here."}
                 </p>
-                <a
-                  href="tel:2058295282"
-                  className="mt-4 inline-flex items-center justify-center rounded-full border border-[#d9d3cb] px-4 py-2 text-[13px] font-semibold text-[#3a3530] transition-colors hover:border-[#c8964e] hover:text-[#1a1a1a]"
-                >
-                  Call 205-829-5282
-                </a>
               </div>
 
               <form
@@ -226,9 +226,9 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
                   <textarea rows={4} className={`${inputClasses} resize-none`} placeholder={content.textareaPlaceholder} />
                 </div>
 
-                <div>
+                <div className="text-center">
                   <label className={labelClasses}>Preferred Contact</label>
-                  <div className="mt-1 flex flex-wrap gap-x-5 gap-y-3">
+                  <div className="mt-1 flex flex-wrap justify-center gap-x-5 gap-y-3">
                     {contactMethods.map((method) => (
                       <label key={method} className="flex cursor-pointer items-center gap-2">
                         <input type="radio" name={`${variant}-contact-method`} value={method} className="h-4 w-4 accent-[#c8964e]" />
