@@ -31,38 +31,38 @@ function getReviewPreview(text: string) {
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const activeReview = reviews[active];
+  const pausedRef = useRef(false);
 
   useEffect(() => {
-    timerRef.current = setInterval(() => {
-      if (!paused) {
+    const id = setInterval(() => {
+      if (!pausedRef.current) {
         setActive((prev) => (prev + 1) % reviews.length);
       }
     }, 5000);
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [paused]);
+    return () => clearInterval(id);
+  }, []);
+
+  const activeReview = reviews[active];
 
   return (
     <section
       id="testimonials"
       className="relative overflow-hidden py-24 lg:py-28 scroll-mt-20"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onTouchStart={() => setPaused(true)}
-      onTouchEnd={() => setPaused(false)}
+      onMouseEnter={() => { pausedRef.current = true; }}
+      onMouseLeave={() => { pausedRef.current = false; }}
+      onTouchStart={() => { pausedRef.current = true; }}
+      onTouchEnd={() => { pausedRef.current = false; }}
     >
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1576698483491-8c43f0862543?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJhdGhyb29tfGVufDB8fDB8fHww')" }}
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1576698483491-8c43f0862543?w=1200&auto=format&fit=crop&q=80')" }}
       />
-      <div className="absolute inset-0 bg-black/38" />
+      <div className="absolute inset-0 bg-black/20" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,rgba(200,150,78,0.12),transparent_40%),radial-gradient(circle_at_10%_90%,rgba(200,150,78,0.08),transparent_45%)]" />
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <ScrollReveal className="relative text-center mb-12">
-          <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-white/80 mb-4">What Our Clients Say</p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.1]">
+          <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-white mb-4 drop-shadow-[0_1px_6px_rgba(0,0,0,0.8)]">Hear What Birmingham Is Saying</p>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.1] drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
             5-Star Reviews
           </h2>
           <div className="mt-4 flex items-center justify-center gap-1">
@@ -71,27 +71,27 @@ export default function Testimonials() {
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
               </svg>
             ))}
-            <span className="text-[14px] text-white/90 ml-2 font-medium">5.0 on Google</span>
+            <span className="text-[14px] text-white ml-2 font-semibold drop-shadow-[0_1px_6px_rgba(0,0,0,0.8)]">5.0 on Google</span>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={100} className="relative mx-auto max-w-2xl">
-          <div className="relative rounded-[28px] border border-white/[0.12] bg-[linear-gradient(165deg,rgba(255,255,255,0.07),rgba(255,255,255,0.02))] p-6 sm:p-10 shadow-[0_28px_80px_rgba(0,0,0,0.35)] transition-all duration-500 ease-out">
-            <span className="absolute left-5 top-4 font-display text-5xl leading-none text-[#c8964e]/45 sm:left-8 sm:top-6 sm:text-6xl">
+          <div className="relative rounded-[28px] border border-white/20 bg-black/40 backdrop-blur-md p-6 sm:p-10 shadow-[0_28px_80px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out">
+            <span className="absolute left-5 top-4 font-display text-5xl leading-none text-[#c8964e]/60 sm:left-8 sm:top-6 sm:text-6xl">
               &ldquo;
             </span>
-            <p className="relative mt-6 text-[17px] sm:text-[18px] font-normal text-white leading-[1.9] text-center tracking-[0.01em] min-h-[7rem] sm:min-h-[6.5rem] drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
+            <p className="relative mt-6 text-[17px] sm:text-[19px] font-normal text-white leading-[1.9] text-center tracking-[0.01em] min-h-[7rem] sm:min-h-[6.5rem]">
               {getReviewPreview(activeReview.text)}
             </p>
-            <p className="mt-4 text-center">
+            <p className="mt-5 text-center">
               <a
                 href={googleReviewUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-4 py-1.5 text-[12px] font-medium text-white/70 transition-all hover:border-white/40 hover:bg-white/10 hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-5 py-2 text-[14px] font-semibold text-white transition-all hover:border-white/70 hover:bg-white/20"
               >
                 Read full review
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                 </svg>
               </a>
@@ -104,7 +104,7 @@ export default function Testimonials() {
           <div className="mt-7 flex items-center justify-center gap-3 sm:gap-6">
             <button
               onClick={() => setActive((active - 1 + reviews.length) % reviews.length)}
-              className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:border-[#c8964e] hover:text-[#c8964e] transition-colors"
+              className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white/70 hover:border-[#c8964e] hover:text-[#c8964e] transition-colors"
               aria-label="Previous review"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -118,7 +118,7 @@ export default function Testimonials() {
                   key={i}
                   onClick={() => setActive(i)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    i === active ? "w-7 bg-[#c8964e]" : "w-2 bg-white/20 hover:bg-white/35"
+                    i === active ? "w-7 bg-[#c8964e]" : "w-2 bg-white/40 hover:bg-white/60"
                   }`}
                   aria-label={`Go to review ${i + 1}`}
                 />
@@ -127,7 +127,7 @@ export default function Testimonials() {
 
             <button
               onClick={() => setActive((active + 1) % reviews.length)}
-              className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:border-[#c8964e] hover:text-[#c8964e] transition-colors"
+              className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white/70 hover:border-[#c8964e] hover:text-[#c8964e] transition-colors"
               aria-label="Next review"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
