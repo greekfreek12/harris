@@ -8,7 +8,7 @@ const services = [
   {
     title: "General Plumbing",
     desc: "For everyday plumbing problems and larger repair work alike, Harris handles fixture replacements, leak repairs, line work, troubleshooting, and code-conscious solutions that keep your home running the way it should.",
-    image: "/images/svc-plumbing.jpg",
+    image: "/images/general-plumbing.jpg",
   },
   {
     title: "Whole-Home Repipes",
@@ -18,7 +18,7 @@ const services = [
   {
     title: "Sewer & Drain Solutions",
     desc: "Sewer cleaning, sewer line diagnostics, camera inspections, backups, and deeper drain issues all fall here. If the problem is underground or hard to pinpoint, this is the level of work where experience matters.",
-    image: "/images/svc-emergency.jpg",
+    image: "/images/sewer-services.jpg",
   },
   {
     title: "New Construction Plumbing",
@@ -33,12 +33,12 @@ const services = [
   {
     title: "Water Heater Installation & Replacement",
     desc: "Tank and tankless installs, replacements, and upgrades done with the sizing, venting, and finish quality you want in a system your household depends on every day.",
-    image: "/images/svc-waterheater.jpg",
+    image: "/images/water-heater-new.jpg",
   },
   {
     title: "Emergency Plumbing",
     desc: "Burst pipes, urgent leaks, sewer backups, and other cannot-wait calls get a fast response. The goal is to stabilize the problem quickly and solve it the right way.",
-    image: "/images/svc-emergency.jpg",
+    image: "/images/emergency-plumbing.jpg",
   },
 ];
 
@@ -47,8 +47,12 @@ export default function PlumbingContent() {
     <>
       <section className="relative py-32 sm:py-40 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/svc-plumbing.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center hidden sm:block"
+          style={{ backgroundImage: "url('/images/plumbing-hero-desktop.jpg')" }}
+        />
+        <div
+          className="absolute inset-0 bg-cover bg-center sm:hidden"
+          style={{ backgroundImage: "url('/images/plumbing-hero-mobile.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50" />
         <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-8 text-center">
