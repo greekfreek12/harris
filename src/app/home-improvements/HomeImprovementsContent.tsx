@@ -8,7 +8,7 @@ const services = [
   {
     title: "Full Home Renovations",
     desc: "Complete interior overhauls from the studs out. We manage every phase — demo, framing, electrical coordination, drywall, finish work, and final detail — so you get a cohesive result with one accountable team. No piecemeal subcontracting, no dropped balls.",
-    image: "/images/svc-home.jpg",
+    image: "/images/full-home-renovations-wave-1.jpg",
   },
   {
     title: "New Construction",
