@@ -77,7 +77,7 @@ export default function QuoteSection() {
 
   return (
     <section id="quote" className="bg-[#f8f6f3] py-24 lg:py-32 scroll-mt-20 border-t border-[#ede8e1]">
-      <div className="mx-auto max-w-2xl px-6 sm:px-8">
+      <div className="mx-auto max-w-4xl px-6 sm:px-8">
 
         {/* Section label + heading */}
         <div className="text-center mb-12">
@@ -172,20 +172,24 @@ export default function QuoteSection() {
             {service && (
               <div
                 ref={formRef}
-                className="overflow-hidden rounded-[28px] border border-[#e2ddd6] bg-white shadow-[0_18px_48px_rgba(0,0,0,0.12)] scroll-mt-24"
+                className="relative overflow-hidden rounded-[28px] border border-white/16 shadow-[0_18px_48px_rgba(0,0,0,0.18)] scroll-mt-24"
               >
-                <div className="relative h-40 overflow-hidden sm:h-48 lg:h-56">
+                <div className="absolute inset-0">
                   <Image
                     src={serviceContent[service].backgroundImage}
                     alt=""
                     fill
-                    sizes="(min-width: 1024px) 768px, 100vw"
+                    sizes="(min-width: 1024px) 896px, 100vw"
                     priority
                     className="object-cover object-center"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,12,11,0.34)_0%,rgba(19,16,13,0.58)_100%)]" />
                 </div>
-                <div className="border-b border-[#f0ebe3] bg-[#fdfbf8] px-7 py-7 text-center">
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,11,10,0.66)_0%,rgba(19,16,13,0.74)_50%,rgba(23,19,15,0.78)_100%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(200,150,78,0.22),transparent_28%),radial-gradient(circle_at_88%_78%,rgba(0,0,0,0.18),transparent_30%)]" />
+
+                <div className="relative p-3 sm:p-4 lg:p-6">
+                  <div className="overflow-hidden rounded-[24px] border border-white/16 bg-white shadow-[0_18px_54px_rgba(0,0,0,0.2)] lg:bg-white/95 lg:backdrop-blur-md">
+                    <div className="border-b border-[#f0ebe3] bg-[#fdfbf8] px-7 py-7 text-center">
                       <p className="text-[15px] font-semibold tracking-[0.01em] text-[#c8964e] sm:text-[18px]">
                         {serviceContent[service].formIntro}
                       </p>
@@ -201,9 +205,9 @@ export default function QuoteSection() {
                       <p className="mt-2 text-[14px] text-[#6b6560] leading-relaxed">
                         {serviceContent[service].text}
                       </p>
-                </div>
+                    </div>
 
-                <div className="p-7 sm:p-9">
+                    <div className="p-7 sm:p-9">
                   {service === "plumbing" ? (
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -313,6 +317,8 @@ export default function QuoteSection() {
                       </button>
                     </form>
                   )}
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
