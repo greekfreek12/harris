@@ -82,38 +82,26 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
 
   return (
     <section id={id} className="relative border-t border-[#ede8e1] bg-[#f8f6f3] py-24 lg:py-28 scroll-mt-20 overflow-hidden">
-      <div className="absolute inset-0 hidden lg:block bg-[radial-gradient(circle_at_18%_20%,rgba(200,150,78,0.12),transparent_28%),radial-gradient(circle_at_82%_80%,rgba(0,0,0,0.08),transparent_34%)]" />
+      <div
+        className="absolute inset-0 hidden lg:block bg-cover bg-center"
+        style={{ backgroundImage: `url('${content.backgroundImage}')` }}
+      />
+      <div className="absolute inset-0 hidden lg:block bg-[linear-gradient(180deg,rgba(10,10,10,0.58)_0%,rgba(20,17,14,0.72)_100%)]" />
+      <div className="absolute inset-0 hidden lg:block bg-[radial-gradient(circle_at_18%_20%,rgba(200,150,78,0.16),transparent_24%),radial-gradient(circle_at_82%_80%,rgba(0,0,0,0.14),transparent_34%)]" />
 
-      <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
-        <div className="mb-12 max-w-3xl text-center lg:text-left">
-          <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#c8964e] sm:text-[14px]">
+      <div className="relative mx-auto max-w-3xl px-6 sm:px-8">
+        <div className="mb-12 text-center">
+          <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#c8964e] sm:text-[14px] lg:text-[#f0cb91]">
             {content.eyebrow}
           </p>
-          <h2 className="font-display text-4xl leading-[1.04] tracking-tight text-[#1a1a1a] sm:text-5xl lg:text-[58px]">
+          <h2 className="font-display text-4xl leading-[1.04] tracking-tight text-[#1a1a1a] sm:text-5xl lg:text-[58px] lg:text-white">
             {content.heading}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-[16px] leading-relaxed text-[#6b6560] lg:mx-0">{content.intro}</p>
+          <p className="mx-auto mt-4 max-w-xl text-[16px] leading-relaxed text-[#6b6560] lg:text-white/88">{content.intro}</p>
         </div>
 
-        <div className="grid items-stretch gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
-          <div className="relative hidden overflow-hidden rounded-[28px] border border-[#e2ddd6] shadow-[0_22px_56px_rgba(0,0,0,0.12)] lg:block">
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url('${content.backgroundImage}')` }}
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,12,10,0.18)_0%,rgba(15,12,10,0.55)_100%)]" />
-            <div className="absolute inset-x-0 bottom-0 p-8">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#e8b474]">
-                {content.panelEyebrow}
-              </p>
-              <p className="mt-3 max-w-sm text-[17px] leading-[1.8] text-white/94">
-                {content.panelText}
-              </p>
-            </div>
-          </div>
-
-          {submitted ? (
-            <div className="rounded-2xl border border-[#e2ddd6] bg-white p-12 text-center shadow-[0_16px_42px_rgba(0,0,0,0.08)] lg:bg-white/96 lg:backdrop-blur-[2px]">
+        {submitted ? (
+          <div className="rounded-2xl border border-[#e2ddd6] bg-white p-12 text-center shadow-[0_16px_42px_rgba(0,0,0,0.08)] lg:bg-white/96 lg:backdrop-blur-[2px]">
             <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#c8964e] shadow-[0_4px_20px_rgba(200,150,78,0.3)]">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="20 6 9 17 4 12" />
@@ -135,9 +123,9 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
             >
               Submit Another Request
             </button>
-            </div>
+          </div>
         ) : (
-            <div className="overflow-hidden rounded-2xl border border-[#e2ddd6] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.05)] lg:bg-white/95 lg:shadow-[0_20px_48px_rgba(0,0,0,0.12)] lg:backdrop-blur-[2px]">
+          <div className="overflow-hidden rounded-2xl border border-[#e2ddd6] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.05)] lg:bg-white/94 lg:shadow-[0_24px_60px_rgba(0,0,0,0.16)] lg:backdrop-blur-[2px]">
             <div className="border-b border-[#f0ebe3] bg-[#fdfbf8] px-7 py-7 text-center">
               <h3 className="font-display text-[26px] leading-tight tracking-tight text-[#1a1a1a] sm:text-[30px]">
                 {variant === "plumbing" ? "Plumbing Estimate Request" : "Home Improvement Estimate Request"}
@@ -244,9 +232,8 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
                 {content.submitLabel}
               </button>
             </form>
-            </div>
+          </div>
         )}
-        </div>
       </div>
     </section>
   );

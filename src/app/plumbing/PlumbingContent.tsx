@@ -15,7 +15,7 @@ const services = [
   {
     title: "Whole-Home Repipes",
     desc: "When old supply lines start failing, patch jobs stop making sense. We handle full repipes with clean planning, minimal disruption, and long-term reliability for older homes and major renovation projects.",
-    image: "/images/svc-plumbing-new.jpg",
+    image: "/images/whole-home-repipes.jpg",
   },
   {
     title: "Sewer & Drain Solutions",
@@ -25,12 +25,12 @@ const services = [
   {
     title: "New Construction Plumbing",
     desc: "From rough-ins to final fixtures, we support residential new builds with clean execution, dependable scheduling, and plumbing systems designed correctly from the start.",
-    image: "/images/hero-bg-new.jpg",
+    image: "/images/new-construction-plumbing.jpg",
   },
   {
     title: "Commercial Plumbing",
     desc: "For tenant build-outs, commercial repairs, and ongoing plumbing needs, Harris provides capable service for businesses that need work done professionally and without wasted time.",
-    image: "/images/svc-home.jpg",
+    image: "/images/commercial-plumbing-mobile.jpg",
   },
   {
     title: "Water Heater Installation & Replacement",
@@ -49,12 +49,8 @@ export default function PlumbingContent() {
     <>
       <section className="relative py-32 sm:py-40 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center hidden sm:block"
-          style={{ backgroundImage: "url('/images/plumbing-hero-desktop.jpg')" }}
-        />
-        <div
-          className="absolute inset-0 bg-cover bg-center sm:hidden"
-          style={{ backgroundImage: "url('/images/plumbing-hero-mobile.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/general-plumbing.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50" />
         <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-8 text-center">

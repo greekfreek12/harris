@@ -11,7 +11,7 @@ const slides = [
     cta: { label: "Explore Home Improvements", href: "/home-improvements" },
   },
   {
-    image: "/images/svc-plumbing-new.jpg",
+    image: "/images/general-plumbing.jpg",
     headline: ["Master-Level", "Plumbing"],
     sub: "New construction rough-in, whole-home repipes, sewer line work, and emergency response — done right the first time.",
     cta: { label: "Explore Plumbing", href: "/plumbing" },
