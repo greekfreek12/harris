@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -14,6 +15,10 @@ const navLinks = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const useLightChrome = !isHome;
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -23,7 +28,9 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+        useLightChrome
+          ? "bg-[#fcfaf7]/96 backdrop-blur-lg border-b border-[#e6dfd6] shadow-[0_2px_24px_rgba(20,20,20,0.08)]"
+          : scrolled
           ? "bg-[#0d0d0d]/95 backdrop-blur-lg shadow-[0_2px_24px_rgba(0,0,0,0.35)]"
           : "bg-transparent"
       }`}
@@ -33,8 +40,13 @@ export default function Navbar() {
           <div className="lg:hidden w-8" />
 
           <Link href="/" className="shrink-0 group absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0">
-            <span className="font-display text-[19px] text-white tracking-tight">
-              Logo Here
+            <span className="flex flex-col items-center lg:items-start leading-none">
+              <span className={`font-display text-[19px] tracking-tight ${useLightChrome ? "text-[#1a1a1a]" : "text-white"}`}>
+                Harris Plumbing
+              </span>
+              <span className={`mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${useLightChrome ? "text-[#8f8477]" : "text-white/70"}`}>
+                &amp; Home Improvements
+              </span>
             </span>
           </Link>
 
@@ -43,7 +55,11 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 text-[15px] text-white/80 font-semibold tracking-wide transition-colors duration-200 hover:text-white rounded-md hover:bg-white/[0.06]"
+                className={`px-4 py-2 text-[15px] font-semibold tracking-wide transition-colors duration-200 rounded-md ${
+                  useLightChrome
+                    ? "text-[#5b524a] hover:text-[#1a1a1a] hover:bg-[#efe9df]"
+                    : "text-white/80 hover:text-white hover:bg-white/[0.06]"
+                }`}
               >
                 {link.label}
               </Link>
@@ -53,7 +69,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:2058295282"
-              className="text-[13px] font-semibold text-white/70 hover:text-white transition-colors"
+              className={`text-[13px] font-semibold transition-colors ${useLightChrome ? "text-[#5b524a] hover:text-[#1a1a1a]" : "text-white/70 hover:text-white"}`}
             >
               (205) 829-5282
             </a>
@@ -70,9 +86,9 @@ export default function Navbar() {
             className="lg:hidden relative w-8 h-8 flex items-center justify-center"
             aria-label="Toggle menu"
           >
-            <span className={`absolute h-[1.5px] w-5 bg-white transition-all duration-300 ${mobileOpen ? "rotate-45" : "-translate-y-[5px]"}`} />
-            <span className={`absolute h-[1.5px] w-5 bg-white transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-            <span className={`absolute h-[1.5px] w-5 bg-white transition-all duration-300 ${mobileOpen ? "-rotate-45" : "translate-y-[5px]"}`} />
+            <span className={`absolute h-[1.5px] w-5 transition-all duration-300 ${useLightChrome ? "bg-[#1a1a1a]" : "bg-white"} ${mobileOpen ? "rotate-45" : "-translate-y-[5px]"}`} />
+            <span className={`absolute h-[1.5px] w-5 transition-all duration-300 ${useLightChrome ? "bg-[#1a1a1a]" : "bg-white"} ${mobileOpen ? "opacity-0" : ""}`} />
+            <span className={`absolute h-[1.5px] w-5 transition-all duration-300 ${useLightChrome ? "bg-[#1a1a1a]" : "bg-white"} ${mobileOpen ? "-rotate-45" : "translate-y-[5px]"}`} />
           </button>
         </div>
       </div>
@@ -82,13 +98,17 @@ export default function Navbar() {
           mobileOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-[#0d0d0d]/98 backdrop-blur-xl border-t border-white/[0.06] px-6 pt-3 pb-6">
+        <div className={`${useLightChrome ? "bg-[#fcfaf7]/98 border-t border-[#e6dfd6]" : "bg-[#0d0d0d]/98 border-t border-white/[0.06]"} backdrop-blur-xl px-6 pt-3 pb-6`}>
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="block py-3 text-[15px] text-white/60 hover:text-white transition-colors border-b border-white/[0.04] last:border-0"
+              className={`block py-3 text-[15px] transition-colors last:border-0 ${
+                useLightChrome
+                  ? "text-[#6a5f54] hover:text-[#1a1a1a] border-b border-[#ebe3da]"
+                  : "text-white/60 hover:text-white border-b border-white/[0.04]"
+              }`}
             >
               {link.label}
             </Link>
@@ -96,7 +116,11 @@ export default function Navbar() {
           <div className="mt-5 space-y-3">
             <a
               href="tel:2058295282"
-              className="block text-center py-3 text-[14px] font-semibold text-white/70 border border-white/10 rounded-xl"
+              className={`block text-center py-3 text-[14px] font-semibold rounded-xl ${
+                useLightChrome
+                  ? "text-[#5b524a] border border-[#ddd2c6] bg-white"
+                  : "text-white/70 border border-white/10"
+              }`}
             >
               (205) 829-5282
             </a>

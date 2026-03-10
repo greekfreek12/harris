@@ -3,6 +3,8 @@
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import ServiceLeadForm from "@/components/ServiceLeadForm";
+import Testimonials from "@/components/Testimonials";
+import ServiceArea from "@/components/ServiceArea";
 
 const services = [
   {
@@ -144,6 +146,8 @@ export default function PlumbingContent() {
       </section>
 
       <ServiceLeadForm id="plumbing-form" variant="plumbing" />
+      <Testimonials />
+      <ServiceArea />
 
       <section className="relative py-24 lg:py-28 overflow-hidden">
         <div

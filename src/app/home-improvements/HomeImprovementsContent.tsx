@@ -3,6 +3,8 @@
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import ServiceLeadForm from "@/components/ServiceLeadForm";
+import Testimonials from "@/components/Testimonials";
+import ServiceArea from "@/components/ServiceArea";
 
 const services = [
   {
@@ -13,7 +15,7 @@ const services = [
   {
     title: "New Construction",
     desc: "Building from the ground up. We work alongside developers and homeowners to deliver quality framing, interior buildout, and finish work on new residential builds. Our crews are reliable, code-compliant, and built for the long haul of a new construction schedule.",
-    image: "/images/hero-bg-new.jpg",
+    image: "/images/new-construction-wave-2.jpg",
   },
   {
     title: "Kitchen Remodels",
@@ -23,7 +25,7 @@ const services = [
   {
     title: "Bathroom Remodels",
     desc: "From primary bath overhauls to hall bath refreshes, we do high-quality bathroom renovations built to last. Tile showers, custom vanities, soaking tubs, heated floors — we bring the vision and the craftsmanship to execute it without shortcuts.",
-    image: "/images/svc-bathroom.jpg",
+    image: "/images/bathroom-remodels-wave-1.png",
   },
   {
     title: "Room Additions & Custom Upgrades",
@@ -39,7 +41,7 @@ export default function HomeImprovementsContent() {
       <section className="relative py-32 sm:py-40 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/svc-home.jpg')" }}
+          style={{ backgroundImage: "url('/images/full-home-renovations-wave-1.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/50" />
         <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-8 text-center">
@@ -137,6 +139,8 @@ export default function HomeImprovementsContent() {
       </section>
 
       <ServiceLeadForm id="home-improvements-form" variant="home-improvement" />
+      <Testimonials />
+      <ServiceArea />
 
       {/* CTA */}
       <section className="relative py-24 lg:py-28 overflow-hidden">
