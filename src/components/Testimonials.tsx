@@ -57,11 +57,11 @@ export default function Testimonials() {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1576698483491-8c43f0862543?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJhdGhyb29tfGVufDB8fDB8fHww')" }}
       />
-      <div className="absolute inset-0 bg-black/54" />
+      <div className="absolute inset-0 bg-black/38" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,rgba(200,150,78,0.12),transparent_40%),radial-gradient(circle_at_10%_90%,rgba(200,150,78,0.08),transparent_45%)]" />
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <ScrollReveal className="relative text-center mb-12">
-          <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-white/55 mb-4">What Our Clients Say</p>
+          <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-white/80 mb-4">What Our Clients Say</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.1]">
             5-Star Reviews
           </h2>
@@ -71,7 +71,7 @@ export default function Testimonials() {
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
               </svg>
             ))}
-            <span className="text-[14px] text-white/65 ml-2 font-medium">5.0 on Google</span>
+            <span className="text-[14px] text-white/90 ml-2 font-medium">5.0 on Google</span>
           </div>
         </ScrollReveal>
 
@@ -80,7 +80,7 @@ export default function Testimonials() {
             <span className="absolute left-5 top-4 font-display text-5xl leading-none text-[#c8964e]/45 sm:left-8 sm:top-6 sm:text-6xl">
               &ldquo;
             </span>
-            <p className="relative mt-6 text-[17px] sm:text-[18px] font-light text-white leading-[1.9] text-center tracking-[0.01em] min-h-[7rem] sm:min-h-[6.5rem]">
+            <p className="relative mt-6 text-[17px] sm:text-[18px] font-normal text-white leading-[1.9] text-center tracking-[0.01em] min-h-[7rem] sm:min-h-[6.5rem] drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
               {getReviewPreview(activeReview.text)}
             </p>
             <p className="mt-4 text-center">

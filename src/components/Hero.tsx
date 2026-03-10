@@ -22,7 +22,7 @@ export default function Hero() {
         </h1>
 
         <p className="animate-fade-in-up delay-600 mt-7 text-[16px] sm:text-[18px] text-white/95 font-medium leading-[1.8] tracking-[0.01em] max-w-lg mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]">
-          Residential construction, renovation, and master-level plumbing delivered with craftsmanship and attention to detail.
+          <span className="text-[#c8964e] font-semibold">Harris Plumbing and Home Improvements</span> — Residential construction, renovation, and master-level plumbing delivered with craftsmanship and attention to detail.
         </p>
 
         <div className="animate-fade-in-up delay-600 mt-10 flex flex-col sm:flex-row gap-3 justify-center">
