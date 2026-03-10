@@ -7,8 +7,8 @@ const services = [
   {
     title: "Home Improvements",
     desc: "New construction, full-home renovations, kitchen and bathroom remodeling, room additions, and custom interior upgrades built for long-term value.",
-    button: "Get a Free Quote",
-    href: "/#quote",
+    button: "Learn More",
+    href: "/home-improvements",
     image: "/images/svc-home.jpg",
   },
   {
