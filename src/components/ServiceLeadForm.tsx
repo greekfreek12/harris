@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 type ServiceLeadFormProps = {
@@ -45,35 +46,31 @@ const labelClasses = "mb-2 block text-[13px] font-semibold text-[#1a1a1a]";
 const copy = {
   plumbing: {
     eyebrow: "Free Plumbing Estimate",
-    heading: "Talk to Harris Plumbing and Home Improvements",
+    heading: "Request an Estimate",
     intro:
-      "Tell us what is going on and we will reach out with a clear next step. For urgent issues, call 205-829-5282.",
+      "Tell us what is going on and we will follow up with a clear next step for your plumbing project.",
     selectLabel: "Service Needed",
     selectPlaceholder: "Select a plumbing service",
     submitLabel: "Request Plumbing Estimate",
     textareaLabel: "Describe the Issue",
     textareaPlaceholder: "Leak, sewer issue, rough-in, water heater replacement, or anything else we should know...",
     backgroundImage: "/images/plumbing-hero-desktop.jpg",
-    panelEyebrow: "Plumbing Services",
-    panelText:
-      "Fast response for plumbing repairs, sewer issues, water heaters, new construction, and bigger system work across Birmingham.",
-    highlights: ["General Plumbing", "Sewer & Drain Solutions", "Water Heaters & Repipes"],
+    formTitle: "Plumbing Estimate Request",
+    formIntro: "Harris Plumbing and Home Improvements",
   },
   "home-improvement": {
     eyebrow: "Free Project Estimate",
-    heading: "Talk to Harris Plumbing and Home Improvements",
+    heading: "Request an Estimate",
     intro:
-      "Share the scope, timing, and budget range and we will follow up with a clear estimate conversation tailored to your project.",
+      "Share the scope, timing, and budget range and we will follow up with a clear estimate conversation for your project.",
     selectLabel: "Project Type",
     selectPlaceholder: "Select a project type",
     submitLabel: "Request Home Improvement Estimate",
     textareaLabel: "Project Details",
     textareaPlaceholder: "Rooms involved, goals, finish level, materials, timing, or anything else that helps us understand the project...",
     backgroundImage: "/images/full-home-renovations-wave-1.jpg",
-    panelEyebrow: "Home Improvements",
-    panelText:
-      "Renovations, room additions, finish work, and larger home improvement projects handled with craftsmanship and clear communication.",
-    highlights: ["Full Home Renovations", "Kitchen & Bathroom Remodels", "New Construction"],
+    formTitle: "Home Improvement Estimate Request",
+    formIntro: "Harris Plumbing and Home Improvements",
   },
 } as const;
 
@@ -84,14 +81,19 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
 
   return (
     <section id={id} className="relative overflow-hidden border-t border-[#ede8e1] bg-[#f8f6f3] py-24 lg:py-28 scroll-mt-20">
-      <div
-        className="absolute inset-0 bg-cover bg-center lg:bg-fixed"
-        style={{ backgroundImage: `url('${content.backgroundImage}')` }}
-      />
+      <div className="absolute inset-0">
+        <Image
+          src={content.backgroundImage}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,11,10,0.66)_0%,rgba(19,16,13,0.74)_50%,rgba(23,19,15,0.78)_100%)] lg:bg-[linear-gradient(90deg,rgba(18,16,13,0.82)_0%,rgba(18,16,13,0.74)_38%,rgba(18,16,13,0.66)_60%,rgba(18,16,13,0.78)_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(200,150,78,0.22),transparent_28%),radial-gradient(circle_at_88%_78%,rgba(0,0,0,0.18),transparent_30%)]" />
 
-      <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
+      <div className="relative mx-auto max-w-4xl px-6 sm:px-8">
         <div className="mb-12 text-center lg:mb-14">
           <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#f0cb91] sm:text-[14px]">
             {content.eyebrow}
@@ -127,41 +129,25 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
             </button>
           </div>
         ) : (
-          <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-stretch">
-            <div className="hidden rounded-[28px] border border-white/14 bg-black/18 p-8 text-white shadow-[0_26px_70px_rgba(0,0,0,0.2)] backdrop-blur-sm lg:flex lg:flex-col lg:justify-between">
-              <div>
-                <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#f0cb91]">
-                  {content.panelEyebrow}
-                </p>
-                <h3 className="mt-5 font-display text-[34px] leading-[1.05] tracking-tight text-white">
-                  Clear communication. Clean work. Reliable follow-through.
-                </h3>
-                <p className="mt-5 max-w-md text-[16px] leading-[1.85] text-white/82">{content.panelText}</p>
-              </div>
-
-              <div className="mt-10 grid gap-3">
-                {content.highlights.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/8 px-4 py-3 text-[14px] font-medium text-white/92"
-                  >
-                    <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#c8964e]" />
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="overflow-hidden rounded-[28px] border border-white/16 bg-white shadow-[0_18px_54px_rgba(0,0,0,0.2)] lg:bg-white/94 lg:backdrop-blur-md">
+          <div className="overflow-hidden rounded-[28px] border border-white/16 bg-white shadow-[0_18px_54px_rgba(0,0,0,0.2)] lg:bg-white/95 lg:backdrop-blur-md">
               <div className="border-b border-[#f0ebe3] bg-[#fcfaf7] px-7 py-7 text-center">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#c8964e]">
+                  {content.formIntro}
+                </p>
                 <h3 className="font-display text-[28px] leading-tight tracking-tight text-[#1a1a1a] sm:text-[32px]">
-                  {variant === "plumbing" ? "Plumbing Estimate Request" : "Home Improvement Estimate Request"}
+                  {content.formTitle}
                 </h3>
                 <p className="mt-2 text-[14px] leading-relaxed text-[#6b6560]">
                   {variant === "plumbing"
                     ? "Need sewer work, a repipe, a water heater, or general plumbing help? Start here."
                     : "Need renovation, new construction, or a major interior upgrade? Start here."}
                 </p>
+                <a
+                  href="tel:2058295282"
+                  className="mt-4 inline-flex items-center justify-center rounded-full border border-[#d9d3cb] px-4 py-2 text-[13px] font-semibold text-[#3a3530] transition-colors hover:border-[#c8964e] hover:text-[#1a1a1a]"
+                >
+                  Call 205-829-5282
+                </a>
               </div>
 
               <form
@@ -259,7 +245,6 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
                   {content.submitLabel}
                 </button>
               </form>
-            </div>
           </div>
         )}
       </div>

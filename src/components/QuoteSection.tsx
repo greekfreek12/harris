@@ -1,25 +1,27 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useRef } from "react";
 
 type ServiceType = "plumbing" | "home-improvement" | null;
 
 const plumbingTypes = [
   "General Plumbing",
-  "Water Heater Install / Repair",
-  "Emergency / Urgent Repair",
-  "Fixture Installation",
-  "Drain & Sewer",
-  "Re-pipe",
+  "Whole-Home Repipes",
+  "Sewer & Drain Solutions",
+  "New Construction Plumbing",
+  "Commercial Plumbing",
+  "Water Heater Installation & Replacement",
+  "Emergency Plumbing",
 ];
 
 const homeTypes = [
   "Kitchen Remodel",
   "Bathroom Remodel",
-  "Flooring & Tile",
-  "Custom Carpentry",
+  "Room Addition",
   "Full Home Renovation",
   "New Construction",
+  "Interior Upgrades & Finish Work",
 ];
 
 const budgetRanges = ["Under $5,000", "$5,000 – $10,000", "$10,000 – $25,000", "$25,000 – $50,000", "$50,000+"];
@@ -37,6 +39,23 @@ const inputClasses =
   "w-full rounded-xl border border-[#e2ddd6] bg-white px-4 py-3.5 text-[16px] text-[#1a1a1a] placeholder:text-[#b5afa8] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#c8964e]/20 focus:border-[#c8964e]";
 
 const labelClasses = "block text-[13px] font-semibold text-[#1a1a1a] mb-2";
+
+const serviceContent = {
+  plumbing: {
+    backgroundImage: "/images/plumbing-hero-desktop.jpg",
+    formTitle: "Plumbing Estimate Request",
+    formIntro: "Harris Plumbing and Home Improvements",
+    text: "Need sewer work, a repipe, a water heater, or general plumbing help? Start here.",
+    button: "Request Plumbing Estimate",
+  },
+  "home-improvement": {
+    backgroundImage: "/images/full-home-renovations-wave-1.jpg",
+    formTitle: "Home Improvement Estimate Request",
+    formIntro: "Harris Plumbing and Home Improvements",
+    text: "Need renovation, new construction, or a major interior upgrade? Start here.",
+    button: "Request Home Improvement Estimate",
+  },
+} as const;
 
 export default function QuoteSection() {
   const [service, setService] = useState<ServiceType>(null);
@@ -151,19 +170,42 @@ export default function QuoteSection() {
 
             {/* Form — revealed after selection */}
             {service && (
-              <div ref={formRef} className="rounded-2xl border border-[#e2ddd6] bg-white overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] scroll-mt-24">
-                <div className="border-b border-[#f0ebe3] bg-[#fdfbf8] px-7 py-7 text-center">
-                  <h3 className="font-display text-[26px] sm:text-[30px] text-[#1a1a1a] tracking-tight leading-tight">
-                    {service === "plumbing" ? "Plumbing Quote Request" : "Home Improvement Quote Request"}
-                  </h3>
-                  <p className="mt-2 text-[14px] text-[#6b6560] leading-relaxed">
-                    {service === "plumbing"
-                      ? "Fill out the form below and we'll get back to you with a fast, honest estimate."
-                      : "Share your project details and we'll put together a clear estimate tailored to your vision."}
-                  </p>
+              <div
+                ref={formRef}
+                className="relative overflow-hidden rounded-[28px] border border-[#e2ddd6] shadow-[0_18px_48px_rgba(0,0,0,0.12)] scroll-mt-24"
+              >
+                <div className="absolute inset-0">
+                  <Image
+                    src={serviceContent[service].backgroundImage}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 768px, 100vw"
+                    priority
+                    className="object-cover object-center"
+                  />
                 </div>
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,12,11,0.7)_0%,rgba(19,16,13,0.78)_100%)]" />
+                <div className="relative p-3 sm:p-4">
+                  <div className="overflow-hidden rounded-[24px] border border-white/16 bg-white shadow-[0_12px_34px_rgba(0,0,0,0.12)] lg:bg-white/95 lg:backdrop-blur-md">
+                    <div className="border-b border-[#f0ebe3] bg-[#fdfbf8] px-7 py-7 text-center">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#c8964e]">
+                        {serviceContent[service].formIntro}
+                      </p>
+                      <h3 className="font-display text-[26px] sm:text-[30px] text-[#1a1a1a] tracking-tight leading-tight">
+                        {serviceContent[service].formTitle}
+                      </h3>
+                      <p className="mt-2 text-[14px] text-[#6b6560] leading-relaxed">
+                        {serviceContent[service].text}
+                      </p>
+                      <a
+                        href="tel:2058295282"
+                        className="mt-4 inline-flex items-center justify-center rounded-full border border-[#d9d3cb] px-4 py-2 text-[13px] font-semibold text-[#3a3530] transition-colors hover:border-[#c8964e] hover:text-[#1a1a1a]"
+                      >
+                        Call 205-829-5282
+                      </a>
+                    </div>
 
-                <div className="p-7 sm:p-9">
+                    <div className="p-7 sm:p-9">
                   {service === "plumbing" ? (
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -179,6 +221,10 @@ export default function QuoteSection() {
                             className={inputClasses} placeholder="(205) 555-0123"
                           />
                         </div>
+                      </div>
+                      <div>
+                        <label className={labelClasses}>Email</label>
+                        <input type="email" required autoComplete="email" className={inputClasses} placeholder="you@example.com" />
                       </div>
                       <div>
                         <label className={labelClasses}>Service Needed</label>
@@ -203,7 +249,7 @@ export default function QuoteSection() {
                         </div>
                       </div>
                       <button type="submit" className="w-full rounded-xl bg-[#c8964e] hover:bg-[#b07d3a] px-6 py-4 text-[15px] font-semibold text-white shadow-[0_4px_20px_rgba(200,150,78,0.3)] transition-all hover:shadow-[0_6px_28px_rgba(200,150,78,0.45)] hover:scale-[1.01] tracking-wide">
-                        Request Plumbing Quote
+                        {serviceContent[service].button}
                       </button>
                     </form>
                   ) : (
@@ -221,6 +267,10 @@ export default function QuoteSection() {
                             className={inputClasses} placeholder="(205) 555-0123"
                           />
                         </div>
+                      </div>
+                      <div>
+                        <label className={labelClasses}>Email</label>
+                        <input type="email" required autoComplete="email" className={inputClasses} placeholder="you@example.com" />
                       </div>
                       <div>
                         <label className={labelClasses}>Project Type</label>
@@ -261,10 +311,12 @@ export default function QuoteSection() {
                         </div>
                       </div>
                       <button type="submit" className="w-full rounded-xl bg-[#c8964e] hover:bg-[#b07d3a] px-6 py-4 text-[15px] font-semibold text-white shadow-[0_4px_20px_rgba(200,150,78,0.3)] transition-all hover:shadow-[0_6px_28px_rgba(200,150,78,0.45)] hover:scale-[1.01] tracking-wide">
-                        Request Home Improvement Quote
+                        {serviceContent[service].button}
                       </button>
                     </form>
                   )}
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
