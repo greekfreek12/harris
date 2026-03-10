@@ -9,7 +9,7 @@ const navLinks = [
   { href: "/home-improvements", label: "Home Improvements" },
   { href: "/plumbing", label: "Plumbing" },
   { href: "/#testimonials", label: "Reviews" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#quote", label: "Contact" },
 ];
 
 export default function Navbar() {
