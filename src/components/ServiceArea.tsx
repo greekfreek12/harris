@@ -19,11 +19,8 @@ const areas = [
   "Hueytown",
 ];
 
-const mapsKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || process.env.GOOGLE_MAPS_API_KEY;
 const mapsQuery = "Birmingham, AL";
-const mapsSrc = mapsKey
-  ? `https://www.google.com/maps/embed/v1/place?key=${mapsKey}&q=${encodeURIComponent(mapsQuery)}&zoom=10`
-  : null;
+const mapsSrc = `https://www.google.com/maps?q=${encodeURIComponent(mapsQuery)}&z=10&output=embed`;
 
 export default function ServiceArea() {
   return (
@@ -104,23 +101,14 @@ export default function ServiceArea() {
 
           <ScrollReveal delay={180} direction="right" scale={false}>
             <div className="overflow-hidden rounded-[28px] border border-[#e2ddd6] bg-white shadow-[0_18px_44px_rgba(0,0,0,0.08)]">
-              {mapsSrc ? (
-                <iframe
-                  title="Harris Plumbing and Home Improvements service area map"
-                  src={mapsSrc}
-                  className="h-[320px] w-full sm:h-[420px]"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
-              ) : (
-                <div className="flex h-[320px] items-center justify-center bg-[linear-gradient(135deg,#f7f3ee,#ece4d8)] px-8 text-center sm:h-[420px]">
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#c8964e]">Map Coming Soon</p>
-                    <p className="mt-4 text-[18px] font-semibold text-[#1a1a1a]">Add `GOOGLE_MAPS_API_KEY` or `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` to display the live service map.</p>
-                  </div>
-                </div>
-              )}
+              <iframe
+                title="Harris Plumbing and Home Improvements service area map"
+                src={mapsSrc}
+                className="h-[320px] w-full sm:h-[420px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
 
               <div className="border-t border-[#ede8e1] bg-[#fcfaf7] px-6 py-5 sm:px-8">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.24em] text-[#c8964e]">Primary Coverage</p>
