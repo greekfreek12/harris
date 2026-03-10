@@ -53,6 +53,7 @@ const copy = {
     submitLabel: "Request Plumbing Estimate",
     textareaLabel: "Describe the Issue",
     textareaPlaceholder: "Leak, sewer issue, rough-in, water heater replacement, or anything else we should know...",
+    backgroundImage: "/images/plumbing-hero-desktop.jpg",
   },
   "home-improvement": {
     eyebrow: "Free Project Estimate",
@@ -64,6 +65,7 @@ const copy = {
     submitLabel: "Request Home Improvement Estimate",
     textareaLabel: "Project Details",
     textareaPlaceholder: "Rooms involved, goals, finish level, materials, timing, or anything else that helps us understand the project...",
+    backgroundImage: "/images/svc-home.jpg",
   },
 } as const;
 
@@ -73,8 +75,15 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
   const content = copy[variant];
 
   return (
-    <section id={id} className="border-t border-[#ede8e1] bg-[#f8f6f3] py-24 lg:py-28 scroll-mt-20">
-      <div className="mx-auto max-w-2xl px-6 sm:px-8">
+    <section id={id} className="relative border-t border-[#ede8e1] bg-[#f8f6f3] py-24 lg:py-28 scroll-mt-20 overflow-hidden">
+      <div
+        className="absolute inset-0 hidden lg:block bg-cover bg-center"
+        style={{ backgroundImage: `url('${content.backgroundImage}')` }}
+      />
+      <div className="absolute inset-0 hidden lg:block bg-[linear-gradient(90deg,rgba(248,246,243,0.94)_0%,rgba(248,246,243,0.86)_38%,rgba(248,246,243,0.76)_100%)]" />
+      <div className="absolute inset-0 hidden lg:block bg-[radial-gradient(circle_at_18%_20%,rgba(200,150,78,0.12),transparent_28%),radial-gradient(circle_at_82%_80%,rgba(0,0,0,0.08),transparent_34%)]" />
+
+      <div className="relative mx-auto max-w-2xl px-6 sm:px-8">
         <div className="mb-12 text-center">
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8964e]">{content.eyebrow}</p>
           <h2 className="font-display text-4xl leading-[1.08] tracking-tight text-[#1a1a1a] sm:text-5xl">
@@ -84,7 +93,7 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
         </div>
 
         {submitted ? (
-          <div className="rounded-2xl border border-[#e2ddd6] bg-white p-12 text-center shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+          <div className="rounded-2xl border border-[#e2ddd6] bg-white p-12 text-center shadow-[0_16px_42px_rgba(0,0,0,0.08)] lg:bg-white/96 lg:backdrop-blur-[2px]">
             <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#c8964e] shadow-[0_4px_20px_rgba(200,150,78,0.3)]">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="20 6 9 17 4 12" />
@@ -108,7 +117,7 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
             </button>
           </div>
         ) : (
-          <div className="overflow-hidden rounded-2xl border border-[#e2ddd6] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.05)]">
+          <div className="overflow-hidden rounded-2xl border border-[#e2ddd6] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.05)] lg:bg-white/95 lg:shadow-[0_20px_48px_rgba(0,0,0,0.12)] lg:backdrop-blur-[2px]">
             <div className="border-b border-[#f0ebe3] bg-[#fdfbf8] px-7 py-7 text-center">
               <h3 className="font-display text-[26px] leading-tight tracking-tight text-[#1a1a1a] sm:text-[30px]">
                 {variant === "plumbing" ? "Plumbing Estimate Request" : "Home Improvement Estimate Request"}
