@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
+import WhyChoose from "@/components/WhyChoose";
 import Testimonials from "@/components/Testimonials";
 import ServiceArea from "@/components/ServiceArea";
 import QuoteSection from "@/components/QuoteSection";
@@ -10,6 +11,7 @@ export default function Home() {
     <>
       <Hero />
       <Services />
+      <WhyChoose />
       <Testimonials />
       <ServiceArea />
       <QuoteSection />

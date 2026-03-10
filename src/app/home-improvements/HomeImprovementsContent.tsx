@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
+import ServiceLeadForm from "@/components/ServiceLeadForm";
 
 const services = [
   {
@@ -66,7 +67,7 @@ export default function HomeImprovementsContent() {
               Call (205) 829-5282
             </a>
             <Link
-              href="/contact"
+              href="#home-improvements-form"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/[0.08] backdrop-blur-sm px-7 py-3.5 text-[14px] font-semibold text-white transition-all duration-200 hover:bg-white/[0.15] hover:border-white/50"
             >
               Get a Free Estimate
@@ -110,22 +111,32 @@ export default function HomeImprovementsContent() {
                   <p className="mt-4 text-[15px] sm:text-[16px] text-[#5e5852] leading-[1.85]">
                     {service.desc}
                   </p>
-                  <Link
-                    href="/contact"
-                    className="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-[#c8964e] transition-colors hover:text-[#b07d3a]"
-                  >
-                    Get a Quote for This
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                  </Link>
+                  <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                    <Link
+                      href="#home-improvements-form"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#c8964e] px-6 py-3 text-[13px] font-semibold text-white shadow-[0_4px_20px_rgba(200,150,78,0.3)] transition-all duration-200 hover:bg-[#b07d3a] hover:shadow-[0_6px_28px_rgba(200,150,78,0.45)] hover:scale-[1.02]"
+                    >
+                      Free Estimate
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </Link>
+                    <a
+                      href="tel:2058295282"
+                      className="inline-flex items-center justify-center rounded-full border border-[#d7d1ca] bg-white px-6 py-3 text-[13px] font-semibold text-[#3a3530] transition-all duration-200 hover:border-[#c8964e] hover:text-[#1a1a1a]"
+                    >
+                      Call (205) 829-5282
+                    </a>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
           ))}
         </div>
       </section>
+
+      <ServiceLeadForm id="home-improvements-form" variant="home-improvement" />
 
       {/* CTA */}
       <section className="relative py-24 lg:py-28 overflow-hidden">
@@ -143,7 +154,7 @@ export default function HomeImprovementsContent() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Link
-              href="/contact"
+              href="#home-improvements-form"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#c8964e] px-8 py-4 text-[14px] font-semibold text-white shadow-[0_4px_24px_rgba(200,150,78,0.35)] transition-all duration-200 hover:bg-[#b07d3a] hover:shadow-[0_6px_32px_rgba(200,150,78,0.5)] hover:scale-[1.02]"
             >
               Request a Free Estimate

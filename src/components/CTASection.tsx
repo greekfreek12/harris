@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 
 export default function CTASection() {
@@ -22,7 +23,7 @@ export default function CTASection() {
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-            <a
+            <Link
               href="/#quote"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#c8964e] px-8 py-4 text-[14px] font-semibold text-white shadow-[0_4px_20px_rgba(200,150,78,0.3)] transition-all duration-200 hover:bg-[#b07d3a] hover:shadow-[0_6px_28px_rgba(200,150,78,0.5)] hover:scale-[1.02]"
             >
@@ -31,7 +32,7 @@ export default function CTASection() {
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
-            </a>
+            </Link>
             <a
               href="tel:2058295282"
               className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/[0.08] backdrop-blur-sm px-8 py-4 text-[14px] font-semibold text-white transition-all duration-200 hover:bg-white/[0.15]"

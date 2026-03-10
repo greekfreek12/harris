@@ -7,14 +7,14 @@ const services = [
   {
     title: "Home Improvements",
     desc: "New construction, full-home renovations, kitchen and bathroom remodeling, room additions, and custom interior upgrades built for long-term value.",
-    button: "Learn More",
+    button: "View Services",
     href: "/home-improvements",
     image: "/images/svc-home.jpg",
   },
   {
     title: "Plumbing Services",
     desc: "High-value plumbing projects including whole-home repipes, sewer and water line replacement, water heater installs, and rough-in plumbing for remodels/new builds.",
-    button: "View Plumbing Services",
+    button: "View Services",
     href: "/plumbing",
     image: "/images/svc-plumbing-new.jpg",
   },

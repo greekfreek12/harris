@@ -38,7 +38,6 @@ export default function Hero() {
       goTo(next);
     }, 7000);
     return () => clearInterval(id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const slide = slides[current];
