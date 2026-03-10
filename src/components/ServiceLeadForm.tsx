@@ -57,6 +57,7 @@ const copy = {
     panelEyebrow: "Plumbing Services",
     panelText:
       "Fast response for plumbing repairs, sewer issues, water heaters, new construction, and bigger system work across Birmingham.",
+    highlights: ["General Plumbing", "Sewer & Drain Solutions", "Water Heaters & Repipes"],
   },
   "home-improvement": {
     eyebrow: "Free Project Estimate",
@@ -72,6 +73,7 @@ const copy = {
     panelEyebrow: "Home Improvements",
     panelText:
       "Renovations, room additions, finish work, and larger home improvement projects handled with craftsmanship and clear communication.",
+    highlights: ["Full Home Renovations", "Kitchen & Bathroom Remodels", "New Construction"],
   },
 } as const;
 
@@ -81,27 +83,27 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
   const content = copy[variant];
 
   return (
-    <section id={id} className="relative border-t border-[#ede8e1] bg-[#f8f6f3] py-24 lg:py-28 scroll-mt-20 overflow-hidden">
+    <section id={id} className="relative overflow-hidden border-t border-[#ede8e1] bg-[#f8f6f3] py-24 lg:py-28 scroll-mt-20">
       <div
-        className="absolute inset-0 hidden lg:block bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center lg:bg-fixed"
         style={{ backgroundImage: `url('${content.backgroundImage}')` }}
       />
-      <div className="absolute inset-0 hidden lg:block bg-[linear-gradient(180deg,rgba(10,10,10,0.58)_0%,rgba(20,17,14,0.72)_100%)]" />
-      <div className="absolute inset-0 hidden lg:block bg-[radial-gradient(circle_at_18%_20%,rgba(200,150,78,0.16),transparent_24%),radial-gradient(circle_at_82%_80%,rgba(0,0,0,0.14),transparent_34%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,11,10,0.66)_0%,rgba(19,16,13,0.74)_50%,rgba(23,19,15,0.78)_100%)] lg:bg-[linear-gradient(90deg,rgba(18,16,13,0.82)_0%,rgba(18,16,13,0.74)_38%,rgba(18,16,13,0.66)_60%,rgba(18,16,13,0.78)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(200,150,78,0.22),transparent_28%),radial-gradient(circle_at_88%_78%,rgba(0,0,0,0.18),transparent_30%)]" />
 
-      <div className="relative mx-auto max-w-3xl px-6 sm:px-8">
-        <div className="mb-12 text-center">
-          <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#c8964e] sm:text-[14px] lg:text-[#f0cb91]">
+      <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
+        <div className="mb-12 text-center lg:mb-14">
+          <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-[#f0cb91] sm:text-[14px]">
             {content.eyebrow}
           </p>
-          <h2 className="font-display text-4xl leading-[1.04] tracking-tight text-[#1a1a1a] sm:text-5xl lg:text-[58px] lg:text-white">
+          <h2 className="font-display text-4xl leading-[1.04] tracking-tight text-white sm:text-5xl lg:text-[58px]">
             {content.heading}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-[16px] leading-relaxed text-[#6b6560] lg:text-white/88">{content.intro}</p>
+          <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-relaxed text-white/86">{content.intro}</p>
         </div>
 
         {submitted ? (
-          <div className="rounded-2xl border border-[#e2ddd6] bg-white p-12 text-center shadow-[0_16px_42px_rgba(0,0,0,0.08)] lg:bg-white/96 lg:backdrop-blur-[2px]">
+          <div className="mx-auto max-w-3xl rounded-[28px] border border-white/18 bg-white p-12 text-center shadow-[0_22px_60px_rgba(0,0,0,0.24)] lg:bg-white/95 lg:backdrop-blur-md">
             <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#c8964e] shadow-[0_4px_20px_rgba(200,150,78,0.3)]">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="20 6 9 17 4 12" />
@@ -125,113 +127,139 @@ export default function ServiceLeadForm({ id, variant }: ServiceLeadFormProps) {
             </button>
           </div>
         ) : (
-          <div className="overflow-hidden rounded-2xl border border-[#e2ddd6] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.05)] lg:bg-white/94 lg:shadow-[0_24px_60px_rgba(0,0,0,0.16)] lg:backdrop-blur-[2px]">
-            <div className="border-b border-[#f0ebe3] bg-[#fdfbf8] px-7 py-7 text-center">
-              <h3 className="font-display text-[26px] leading-tight tracking-tight text-[#1a1a1a] sm:text-[30px]">
-                {variant === "plumbing" ? "Plumbing Estimate Request" : "Home Improvement Estimate Request"}
-              </h3>
-              <p className="mt-2 text-[14px] leading-relaxed text-[#6b6560]">
-                {variant === "plumbing"
-                  ? "Need sewer work, a repipe, a water heater, or general plumbing help? Start here."
-                  : "Need renovation, new construction, or a major interior upgrade? Start here."}
-              </p>
+          <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-stretch">
+            <div className="hidden rounded-[28px] border border-white/14 bg-black/18 p-8 text-white shadow-[0_26px_70px_rgba(0,0,0,0.2)] backdrop-blur-sm lg:flex lg:flex-col lg:justify-between">
+              <div>
+                <p className="text-[12px] font-semibold uppercase tracking-[0.28em] text-[#f0cb91]">
+                  {content.panelEyebrow}
+                </p>
+                <h3 className="mt-5 font-display text-[34px] leading-[1.05] tracking-tight text-white">
+                  Clear communication. Clean work. Reliable follow-through.
+                </h3>
+                <p className="mt-5 max-w-md text-[16px] leading-[1.85] text-white/82">{content.panelText}</p>
+              </div>
+
+              <div className="mt-10 grid gap-3">
+                {content.highlights.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/8 px-4 py-3 text-[14px] font-medium text-white/92"
+                  >
+                    <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#c8964e]" />
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSubmitted(true);
-              }}
-              className="space-y-5 p-7 sm:p-9"
-            >
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                <div>
-                  <label className={labelClasses}>Name</label>
-                  <input type="text" required autoComplete="name" className={inputClasses} placeholder="Your name" />
-                </div>
-                <div>
-                  <label className={labelClasses}>Phone</label>
-                  <input
-                    type="tel"
-                    inputMode="tel"
-                    required
-                    autoComplete="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(formatPhone(e.target.value))}
-                    className={inputClasses}
-                    placeholder="(205) 555-0123"
-                  />
-                </div>
+            <div className="overflow-hidden rounded-[28px] border border-white/16 bg-white shadow-[0_18px_54px_rgba(0,0,0,0.2)] lg:bg-white/94 lg:backdrop-blur-md">
+              <div className="border-b border-[#f0ebe3] bg-[#fcfaf7] px-7 py-7 text-center">
+                <h3 className="font-display text-[28px] leading-tight tracking-tight text-[#1a1a1a] sm:text-[32px]">
+                  {variant === "plumbing" ? "Plumbing Estimate Request" : "Home Improvement Estimate Request"}
+                </h3>
+                <p className="mt-2 text-[14px] leading-relaxed text-[#6b6560]">
+                  {variant === "plumbing"
+                    ? "Need sewer work, a repipe, a water heater, or general plumbing help? Start here."
+                    : "Need renovation, new construction, or a major interior upgrade? Start here."}
+                </p>
               </div>
 
-              <div>
-                <label className={labelClasses}>Email</label>
-                <input type="email" required autoComplete="email" className={inputClasses} placeholder="you@example.com" />
-              </div>
-
-              <div>
-                <label className={labelClasses}>{content.selectLabel}</label>
-                <select required className={inputClasses}>
-                  <option value="">{content.selectPlaceholder}</option>
-                  {(variant === "plumbing" ? plumbingTypes : homeTypes).map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {variant === "home-improvement" && (
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setSubmitted(true);
+                }}
+                className="space-y-5 p-7 sm:p-9"
+              >
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
-                    <label className={labelClasses}>Budget Range</label>
-                    <select required className={inputClasses}>
-                      <option value="">Select budget</option>
-                      {budgetRanges.map((range) => (
-                        <option key={range} value={range}>
-                          {range}
-                        </option>
-                      ))}
-                    </select>
+                    <label className={labelClasses}>Name</label>
+                    <input type="text" required autoComplete="name" className={inputClasses} placeholder="Your name" />
                   </div>
                   <div>
-                    <label className={labelClasses}>Timeline</label>
-                    <select required className={inputClasses}>
-                      <option value="">Select timeline</option>
-                      {timelines.map((timeline) => (
-                        <option key={timeline} value={timeline}>
-                          {timeline}
-                        </option>
-                      ))}
-                    </select>
+                    <label className={labelClasses}>Phone</label>
+                    <input
+                      type="tel"
+                      inputMode="tel"
+                      required
+                      autoComplete="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(formatPhone(e.target.value))}
+                      className={inputClasses}
+                      placeholder="(205) 555-0123"
+                    />
                   </div>
                 </div>
-              )}
 
-              <div>
-                <label className={labelClasses}>{content.textareaLabel}</label>
-                <textarea rows={4} className={`${inputClasses} resize-none`} placeholder={content.textareaPlaceholder} />
-              </div>
-
-              <div>
-                <label className={labelClasses}>Preferred Contact</label>
-                <div className="mt-1 flex flex-wrap gap-x-5 gap-y-3">
-                  {contactMethods.map((method) => (
-                    <label key={method} className="flex cursor-pointer items-center gap-2">
-                      <input type="radio" name={`${variant}-contact-method`} value={method} className="h-4 w-4 accent-[#c8964e]" />
-                      <span className="text-[14px] text-[#6b6560] transition-colors hover:text-[#1a1a1a]">{method}</span>
-                    </label>
-                  ))}
+                <div>
+                  <label className={labelClasses}>Email</label>
+                  <input type="email" required autoComplete="email" className={inputClasses} placeholder="you@example.com" />
                 </div>
-              </div>
 
-              <button
-                type="submit"
-                className="w-full rounded-xl bg-[#c8964e] px-6 py-4 text-[15px] font-semibold tracking-wide text-white shadow-[0_4px_20px_rgba(200,150,78,0.3)] transition-all hover:scale-[1.01] hover:bg-[#b07d3a] hover:shadow-[0_6px_28px_rgba(200,150,78,0.45)]"
-              >
-                {content.submitLabel}
-              </button>
-            </form>
+                <div>
+                  <label className={labelClasses}>{content.selectLabel}</label>
+                  <select required className={inputClasses}>
+                    <option value="">{content.selectPlaceholder}</option>
+                    {(variant === "plumbing" ? plumbingTypes : homeTypes).map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {variant === "home-improvement" && (
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                    <div>
+                      <label className={labelClasses}>Budget Range</label>
+                      <select required className={inputClasses}>
+                        <option value="">Select budget</option>
+                        {budgetRanges.map((range) => (
+                          <option key={range} value={range}>
+                            {range}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className={labelClasses}>Timeline</label>
+                      <select required className={inputClasses}>
+                        <option value="">Select timeline</option>
+                        {timelines.map((timeline) => (
+                          <option key={timeline} value={timeline}>
+                            {timeline}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  <label className={labelClasses}>{content.textareaLabel}</label>
+                  <textarea rows={4} className={`${inputClasses} resize-none`} placeholder={content.textareaPlaceholder} />
+                </div>
+
+                <div>
+                  <label className={labelClasses}>Preferred Contact</label>
+                  <div className="mt-1 flex flex-wrap gap-x-5 gap-y-3">
+                    {contactMethods.map((method) => (
+                      <label key={method} className="flex cursor-pointer items-center gap-2">
+                        <input type="radio" name={`${variant}-contact-method`} value={method} className="h-4 w-4 accent-[#c8964e]" />
+                        <span className="text-[14px] text-[#6b6560] transition-colors hover:text-[#1a1a1a]">{method}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full rounded-xl bg-[#c8964e] px-6 py-4 text-[15px] font-semibold tracking-wide text-white shadow-[0_4px_20px_rgba(200,150,78,0.3)] transition-all hover:scale-[1.01] hover:bg-[#b07d3a] hover:shadow-[0_6px_28px_rgba(200,150,78,0.45)]"
+                >
+                  {content.submitLabel}
+                </button>
+              </form>
+            </div>
           </div>
         )}
       </div>

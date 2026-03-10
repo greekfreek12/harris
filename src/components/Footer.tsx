@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 const serviceList = [
+  "Full Home Renovations",
+  "New Construction",
   "Bathroom Remodels",
-  "Kitchen Renovations",
-  "Flooring & Tile",
-  "Custom Carpentry",
+  "Kitchen Remodels",
   "General Plumbing",
-  "Water Heaters",
+  "Sewer & Drain Solutions",
 ];
 
 const companyLinks = [
